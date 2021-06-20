@@ -7,4 +7,4 @@ It also is kinda a Game Launcher.
 Will not work for everyone without adapting it to the PC (Changing Paths, adding Games, adding Tasks etc.). 
 
 In some Games like Left 4 Dead, Raft and even Cemu Emulator it helped with my fps a lot!
-This isn't a Game Changer just simple optimization.
+This isn't a Game Changer just simple optimization so the CPU, RAM and GPU will have less work.
