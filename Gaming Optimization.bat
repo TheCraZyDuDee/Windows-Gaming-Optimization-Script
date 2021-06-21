@@ -20,15 +20,8 @@ echo 1 = Optimize for Gaming
 echo 2 = Revert to default
 echo 3 = Exit
 echo.
-set /p c=Select your Option: 
-if "%c%"=="6969" goto why...
-if "%c%" GTR "3" goto select
-if "%c%" LSS "1" goto select
-if "%c%"=="1" goto choose_game
-if "%c%"=="2" goto reset
-if "%c%"=="3" goto exit
+goto select
 echo.
-goto start
 
 rem   /////////////////
 rem  //  Game List  //
@@ -36,7 +29,7 @@ rem /////////////////
 
 :choose_game
 echo.
-echo Please select the Game you want to run.
+echo Please select the Game you want to run:
 echo.
 echo 0.  Optimize without Game
 echo 1.  Left 4 Dead
@@ -50,42 +43,10 @@ echo 8.  Minecraft Launcher
 echo 9.  Grand Theft Auto V
 echo 10. PC Building Simulator
 echo 11. Raft
-echo 12. Cemu Emulator
+echo 12. Outlast 2
+echo 13. Cemu Emulator
 echo.
-set /p c=Select your Option: 
-if "%c%"=="6969" goto why...
-if "%c%"=="0" goto optimize
-if "%c%"=="1" goto l4d
-if "%c%"=="2" goto l4d2
-if "%c%"=="3" goto dbd
-if "%c%"=="4" goto pd2
-if "%c%"=="5" goto cod_waw
-if "%c%"=="6" goto cod_bo3
-if "%c%"=="7" goto plutonium
-if "%c%"=="8" goto mc
-if "%c%"=="9" goto gta5
-if "%c%"=="10" goto pcbs
-if "%c%"=="11" goto raft
-if "%c%"=="12" goto cemu
-if "%c%" GTR "13" goto game_select
-
-:game_select
-set /p c=Select your Option: 
-if "%c%"=="6969" goto why...
-if "%c%"=="0" goto optimize
-if "%c%"=="1" goto l4d
-if "%c%"=="2" goto l4d2
-if "%c%"=="3" goto dbd
-if "%c%"=="4" goto pd2
-if "%c%"=="5" goto cod_waw
-if "%c%"=="6" goto cod_bo3
-if "%c%"=="7" goto plutonium
-if "%c%"=="8" goto mc
-if "%c%"=="9" goto gta5
-if "%c%"=="10" goto pcbs
-if "%c%"=="11" goto raft
-if "%c%"=="12" goto cemu
-if "%c%" GTR "13" goto game_select
+goto game_select
 
 rem   /////////////////////
 rem  //  Game Startups  //
@@ -141,7 +102,7 @@ goto optimize
 
 :plutonium
 echo Starting Plutonium Launcher...
-start "" "C:\Users\L\Desktop\plutonium.exe"
+start "" "C:\Program Files\Plutonium\plutonium.exe"
 @ping -n 10 localhost> nul
 echo Plutonium Launcher started Sucessfully!
 echo.
@@ -176,6 +137,14 @@ echo Starting Raft...
 start "" "D:\Games\Raft\Raft.exe"
 @ping -n 6 localhost> nul
 echo Raft started Sucessfully!
+echo.
+goto optimize
+
+:outlast_2
+echo Starting Outlast 2...
+start "" "D:\Games\Outlast 2\Binaries\Win64\Outlast2.exe"
+@ping -n 10 localhost> nul
+echo Outlast 2 started Sucessfully!
 echo.
 goto optimize
 
@@ -258,19 +227,34 @@ rem   ////////////////////
 rem  //  Choice Input  //
 rem ////////////////////
 
-:select
-echo.
-echo Choose an Option:
-echo.
-echo 1 = Optimize for Gaming
-echo 2 = Revert to default
-echo 3 = Exit
+:game_select
 echo.
 set /p c=Select your Option: 
+echo.
+if "%c%"=="6969" goto why...
+if "%c%"=="0" goto optimize
+if "%c%"=="1" goto l4d
+if "%c%"=="2" goto l4d2
+if "%c%"=="3" goto dbd
+if "%c%"=="4" goto pd2
+if "%c%"=="5" goto cod_waw
+if "%c%"=="6" goto cod_bo3
+if "%c%"=="7" goto plutonium
+if "%c%"=="8" goto mc
+if "%c%"=="9" goto gta5
+if "%c%"=="10" goto pcbs
+if "%c%"=="11" goto raft
+if "%c%"=="12" goto outlast_2
+if "%c%"=="13" goto cemu
+if "%c%" GTR "13" goto game_select
+
+:select
+set /p c=Select your Option: 
+echo.
 if "%c%"=="6969" goto why...
 if "%c%" GTR "3" goto select
 if "%c%" LSS "1" goto select
-if "%c%"=="1" goto optimize
+if "%c%"=="1" goto choose_game
 if "%c%"=="2" goto reset
 if "%c%"=="3" goto exit
 
@@ -282,6 +266,7 @@ echo 1 = Optimize for Gaming
 echo 2 = Exit
 echo.
 set /p c=Select your Option: 
+echo.
 if "%c%"=="6969" goto why...
 if "%c%" GTR "2" goto select_2
 if "%c%" LSS "1" goto select_2
@@ -296,6 +281,7 @@ echo 1 = Revert to default
 echo 2 = Exit
 echo.
 set /p c=Select your Option: 
+echo
 if "%c%"=="6969" goto why...
 if "%c%" GTR "2" goto select_3
 if "%c%" LSS "1" goto select_3
