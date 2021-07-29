@@ -432,6 +432,8 @@ wmic process where name="gta5.exe" CALL setpriority "256" >nul
 wmic process where name="PCBS.exe" CALL setpriority "256" >nul
 wmic process where name="Raft.exe" CALL setpriority "256" >nul
 wmic process where name="Cemu.exe" CALL setpriority "256" >nul
+cls
+echo.
 echo Priority Sucessfully changed!
 echo.
 goto select_3
@@ -450,6 +452,8 @@ wmic process where name="gta5.exe" CALL setpriority "128" >nul
 wmic process where name="PCBS.exe" CALL setpriority "128" >nul
 wmic process where name="Raft.exe" CALL setpriority "128" >nul
 wmic process where name="Cemu.exe" CALL setpriority "128" >nul
+cls
+echo.
 echo Priority Sucessfully changed!
 echo.
 goto select_3
@@ -468,6 +472,8 @@ wmic process where name="gta5.exe" CALL setpriority "32768" >nul
 wmic process where name="PCBS.exe" CALL setpriority "32768" >nul
 wmic process where name="Raft.exe" CALL setpriority "32768" >nul
 wmic process where name="Cemu.exe" CALL setpriority "32768" >nul
+cls
+echo.
 echo Priority Sucessfully changed!
 echo.
 goto select_3
@@ -486,6 +492,8 @@ wmic process where name="gta5.exe" CALL setpriority "32" >nul
 wmic process where name="PCBS.exe" CALL setpriority "32" >nul
 wmic process where name="Raft.exe" CALL setpriority "32" >nul
 wmic process where name="Cemu.exe" CALL setpriority "32" >nul
+cls
+echo.
 echo Priority Sucessfully changed!
 echo.
 goto select_3
@@ -504,6 +512,8 @@ wmic process where name="gta5.exe" CALL setpriority "16384" >nul
 wmic process where name="PCBS.exe" CALL setpriority "16384" >nul
 wmic process where name="Raft.exe" CALL setpriority "16384" >nul
 wmic process where name="Cemu.exe" CALL setpriority "16384" >nul
+cls
+echo.
 echo Priority Sucessfully changed!
 echo.
 goto select_3
@@ -522,6 +532,8 @@ wmic process where name="gta5.exe" CALL setpriority "64" >nul
 wmic process where name="PCBS.exe" CALL setpriority "64" >nul
 wmic process where name="Raft.exe" CALL setpriority "64" >nul
 wmic process where name="Cemu.exe" CALL setpriority "64" >nul
+cls
+echo.
 echo Priority Sucessfully changed!
 echo.
 goto select_3
@@ -530,18 +542,24 @@ goto select_3
 echo Disable useless Services and Tasks
 echo This may take some time...
 echo.
-taskkill /F /IM AdobeNotificationClient.exe
-taskkill /F /IM AdobeUpdateService.exe
-taskkill /F /IM explorer.exe
-taskkill /F /IM Microsoft.Photos.exe
-taskkill /F /IM WinStore.App.exe
-taskkill /F /IM TaskInputHost.exe
-taskkill /F /IM NordVPN.exe
-taskkill /F /IM GameBarPresenceWriter.exe
-taskkill /F /IM atieclxx.exe
-taskkill /F /IM dwm.exe
-taskkill /F /IM voicemeeter.exe
-taskkill /F /IM Lightshot.exe
+taskkill /F /IM "AdobeIPCBroker.exe"
+taskkill /F /IM "AdobeNotificationClient.exe"
+taskkill /F /IM "AdobeUpdateService.exe"
+taskkill /F /IM "CCLibrary.exe"
+taskkill /F /IM "CCXProcess.exe"
+taskkill /F /IM "Adobe Desktop Service.exe"
+taskkill /F /IM "Creative Cloud Helper.exe"
+taskkill /F /IM "CoreSync.exe"
+taskkill /F /IM "explorer.exe"
+taskkill /F /IM "Microsoft.Photos.exe"
+taskkill /F /IM "WinStore.App.exe"
+taskkill /F /IM "TaskInputHost.exe"
+taskkill /F /IM "NordVPN.exe"
+taskkill /F /IM "GameBarPresenceWriter.exe"
+taskkill /F /IM "atieclxx.exe"
+taskkill /F /IM "dwm.exe"
+taskkill /F /IM "voicemeeter.exe"
+taskkill /F /IM "Lightshot.exe"
 net stop "AdobeUpdateService"
 net stop "AGMService"
 net stop "AGSService"
@@ -565,14 +583,16 @@ net stop "Spooler"
 net stop "SysMain"
 net stop "WpnService"
 net stop "WSearch"
-wmic process where name="chrome.exe" CALL setpriority "64" >nul
-wmic process where name="firefox.exe" CALL setpriority "64" >nul
-wmic process where name="steam.exe" CALL setpriority "64" >nul
-wmic process where name="steamservice.exe" CALL setpriority "64" >nul
-wmic process where name="steamwebhelper.exe" CALL setpriority "64" >nul
-wmic process where name="GameOverlayUI.exe" CALL setpriority "64" >nul
+wmic process where name="chrome.exe" CALL setpriority "64"
+wmic process where name="firefox.exe" CALL setpriority "64"
+wmic process where name="steam.exe" CALL setpriority "64"
+wmic process where name="steamservice.exe" CALL setpriority "64"
+wmic process where name="steamwebhelper.exe" CALL setpriority "64"
+wmic process where name="GameOverlayUI.exe" CALL setpriority "64"
 set HARDWARE_ID="ACPI\VEN_PNP&DEV_0103"
 devcon /r disable *PNP0103
+cls
+echo.
 echo Optimization Successfull!
 goto select_3
 
@@ -600,13 +620,15 @@ net start "Spooler"
 net start "SysMain"
 net start "WpnService"
 net start "WSearch"
-wmic process where name="chrome.exe" CALL setpriority "32" >nul
-wmic process where name="firefox.exe" CALL setpriority "32" >nul
-wmic process where name="steam.exe" CALL setpriority "32" >nul
-wmic process where name="steamservice.exe" CALL setpriority "32" >nul
-wmic process where name="steamwebhelper.exe" CALL setpriority "32" >nul
+wmic process where name="chrome.exe" CALL setpriority "32"
+wmic process where name="firefox.exe" CALL setpriority "32"
+wmic process where name="steam.exe" CALL setpriority "32"
+wmic process where name="steamservice.exe" CALL setpriority "32"
+wmic process where name="steamwebhelper.exe" CALL setpriority "32"
 set HARDWARE_ID="ACPI\VEN_PNP&DEV_0103"
 devcon /r enable *PNP0103
+cls
+echo.
 echo Settings reverted to default!
 goto select_2
 
@@ -699,11 +721,14 @@ echo.
 echo 1 = Optimize for Gaming
 echo 2 = Exit
 echo.
+goto select_22
+
+:select_22
 set /p c=Select your Option: 
 echo.
 if "%c%"=="6969" goto why...
-if "%c%" GTR "2" goto select_2
-if "%c%" LSS "1" goto select_2
+if "%c%" GTR "2" goto select_22
+if "%c%" LSS "1" goto select_22
 if "%c%"=="1" goto choose_game
 if "%c%"=="2" goto exit
 
@@ -713,22 +738,27 @@ echo Choose an Option:
 echo.
 echo 1 = Revert to default
 echo 2 = Start another Game
-echo 3 = Open Discord
-echo 4 = Close Discord
-echo 5 = Open Browser
-echo 6 = Exit
+echo 3 = Open Lightcord
+echo 4 = Open Chrome
+echo 5 = Open Explorer++
+echo 6 = Open Taskmanager
+echo 7 = Exit
 echo.
+goto select_33
+
+:select_33
 set /p c=Select your Option: 
 echo.
 if "%c%"=="6969" goto why...
-if "%c%" GTR "4" goto select_3
-if "%c%" LSS "1" goto select_3
+if "%c%" GTR "7" goto select_33
+if "%c%" LSS "1" goto select_33
 if "%c%"=="1" goto reset
 if "%c%"=="2" goto choose_game_2
 if "%c%"=="3" goto start_discord
-if "%c%"=="4" goto close_discord
-if "%c%"=="5" goto browser
-if "%c%"=="6" goto exit
+if "%c%"=="4" goto browser
+if "%c%"=="5" goto explorer
+if "%c%"=="6" goto taskmanager
+if "%c%"=="7" goto exit
 
 rem   ///////////
 rem  //  lol  //
@@ -741,21 +771,35 @@ pause
 exit
 
 :start_discord
-echo Starting Discord...
+echo Starting Lightcord...
 start "" "C:\Users\L\Desktop\lightcord.exe"
-echo Discord started successfully!
-goto select_3
-
-:close_discord
-echo Closing Discord...
-taskkill "Lightcord.exe"
-echo Discord closed Sucessfully!
+cls
+echo.
+echo Lightcord started successfully!
 goto select_3
 
 :browser
-echo Starting Browser...
+echo Starting Chrome...
 start "" "C:\Users\L\AppData\Local\Chromium\Application\chrome.exe"
-echo Browser started sucessfully!
+cls
+echo.
+echo Chrome started Sucessfully!
+goto select_3
+
+:explorer
+echo Starting Explorer++...
+start "" "C:\Program Files\Explorer++\App\Explorer++\Explorer++.exe"
+cls
+echo.
+echo Explorer++ started Sucessfully!
+goto select_3
+
+:taskmanager
+echo Starting Taskmanager...
+start "" Taskmgr.exe
+cls
+echo.
+echo Taskmanager started Sucessfully!
 goto select_3
 
 rem   ////////////
