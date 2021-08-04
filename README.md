@@ -1,5 +1,5 @@
 # Simple-Gaming-Optimization
-Simple Batch that does optimizations like disabeling Tasks, Services and much more while Gaming.
+Simple Batch that does optimizations like disabeling Tasks, Services and much more while Gaming.<br/>
 All changes will only be temporary you also have the option to revert everything.<br/>
 Got tired of these "Game Boosters" that literally do the same shit.
 
