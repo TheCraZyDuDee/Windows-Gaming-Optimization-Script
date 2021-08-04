@@ -6,7 +6,7 @@ Got tired of these "Game Boosters" that literally do the same shit or even do le
 Here is a list of things that the optimization will do:<br/>
 
 - You can change the Priority from Games to whatever you like
-- Killing useless Tasks
+- Killing useless Tasks (Explorer is one of them)
 - Disabeling useless Services
 - Lower the Priority of some Processes
 - Clears the Recycle Bin, Temp Folder and the Prefetch Folder
