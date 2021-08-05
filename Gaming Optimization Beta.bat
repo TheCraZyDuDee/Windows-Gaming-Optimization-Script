@@ -2140,7 +2140,7 @@ goto select_33
 set /p c=Select your Option: 
 echo.
 if "%c%"=="6969" goto why...
-if "%c%" GTR "7" goto select_33
+if "%c%" GTR "8" goto select_33
 if "%c%" LSS "1" goto select_33
 if "%c%"=="1" goto reset
 if "%c%"=="2" goto choose_game_2
