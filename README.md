@@ -22,4 +22,5 @@ In some Games like Left 4 Dead, Raft, Dead by Daylight and even Cemu Emulator it
 This isn't a Game Changer just simple optimization so the CPU, RAM and GPU will have less work.
 
 Note: there is now also a Beta which has a new Priority System so when multiple Games run each one can have it's own Priority.<br/>
-It's currently still in work and will be changed.
+It's currently still in work and will be changed.<br/>
+Also there is now a workarround to change the Priority on Games with EasyAntiCheat.
