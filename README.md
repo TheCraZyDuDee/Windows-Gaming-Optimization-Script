@@ -21,6 +21,15 @@ I just configured it for my use how i need it.
 In some Games like Left 4 Dead, Raft, Dead by Daylight and even Cemu Emulator it helped with my fps and lags a lot!<br/>
 This isn't a Game Changer just simple optimization so the System will have less work.
 
+Here are my System Specs i use it on:<br/>
+
+- AMD A8 5600k APU (OC on 4.22 GHz)
+- 2x8 GB DDR3
+- Nvidia GTX 960 2GB (Core Clock +230, Memory Clock +650)
+- Asus A88XM-A Mainboard
+- Windows 10 x64 Pro
+
+
 Note: there is now also a Beta which has a new Priority System so when multiple Games run each one can have it's own Priority.<br/>
 It's currently still in work and will be changed.<br/>
 Also there is now a workarround to change the Priority on Games with EasyAntiCheat.
