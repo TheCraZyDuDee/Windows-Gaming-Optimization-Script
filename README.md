@@ -24,7 +24,7 @@ This isn't a Game Changer just simple optimization so the System will have less 
 Here are my System Specs i use it on:<br/>
 
 - AMD A8 5600k APU (OC on 4.22 GHz)
-- 2x8 GB DDR3
+- 2x8 GB DDR3 1600MHz
 - Nvidia GTX 960 2GB (Core Clock +230, Memory Clock +650)
 - Asus A88XM-A Mainboard
 - Windows 10 x64 Pro
