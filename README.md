@@ -29,7 +29,4 @@ Here are my System Specs i use it on:<br/>
 - Asus A88XM-A Mainboard
 - Windows 10 x64 Pro
 
-
-Note: there is now also a Beta which has a new Priority System so when multiple Games run each one can have it's own Priority.<br/>
-It's currently still in work and will be changed.<br/>
-Also there is now a workarround to change the Priority on Games with EasyAntiCheat.
+Note: There is now a workarround to change the Priority on Games with EasyAntiCheat.
