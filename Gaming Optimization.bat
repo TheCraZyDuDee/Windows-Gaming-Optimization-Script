@@ -1,5 +1,5 @@
 @echo off
-title Gaming Optimization Beta by crustySenpai
+title Gaming Optimization by crustySenpai
 if not "%1"=="am_admin" (powershell start -verb runas '%0' am_admin & exit /b)
 cls
 :start
