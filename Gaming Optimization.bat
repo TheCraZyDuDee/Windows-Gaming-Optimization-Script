@@ -1,7 +1,6 @@
 @echo off
 title Gaming Optimization by crustySenpai
 if not "%1"=="am_admin" (powershell start -verb runas '%0' am_admin & exit /b)
-pause
 
 :start
 cls
@@ -19,7 +18,6 @@ echo Choose an Option:
 echo.
 echo 1 = Optimize for Gaming
 echo 2 = Revert to default
-echo 3 = Update
 echo 4 = Exit
 echo.
 goto select
@@ -2595,12 +2593,11 @@ if "%c%"=="16" goto cemu_2
 :select
 set /p c=Select your Option: 
 if "%c%"=="6969" goto why...
-if "%c%" GTR "4" goto select
+if "%c%" GTR "3" goto select
 if "%c%" LSS "1" goto select
 if "%c%"=="1" goto choose_game
 if "%c%"=="2" goto reset
-if "%c%"=="3" goto update
-if "%c%"=="4" goto exit
+if "%c%"=="3" goto exit
 
 :select_2
 echo.
@@ -2651,18 +2648,6 @@ echo that's not what you supposed to do here...
 echo anyway if you're already here follow my YouTube: https://www.youtube.com/channel/UCPaLYkLQVanuXOrBSxrZyAQ
 pause
 exit
-
-:update
-cls
-echo.
-echo Sadly i haven't found a way to implement an Updater yet so you need to check by yourself for now.
-echo.
-echo Check for the newest Version here:
-echo https://github.com/crustySenpai/Windows-10-Gaming-Optimization-Script
-echo.
-echo Please Press any Button to go Back...
-pause >nul
-goto start
 
 :tool_menu
 cls
