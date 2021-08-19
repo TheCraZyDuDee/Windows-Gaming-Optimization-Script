@@ -1,4 +1,4 @@
-# Gaming Optimization Batch Script
+# Windows 10 Gaming Optimization Batch Script
 Note: There is now a Cloner/Updater you can get it [here](https://github.com/crustySenpai/Gaming-Optimization-Cloner-Updater)
 
 Simple Batch that does optimizations like disabeling Tasks, Services and much more while Gaming.<br/>
