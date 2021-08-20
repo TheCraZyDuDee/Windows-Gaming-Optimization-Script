@@ -1,5 +1,5 @@
 # Windows 10 Gaming Optimization Batch Script
-There is now a Universal Version which has all Features removed that needed to be personalized.
+There is now a Universal Version which has all Features removed that needed to be personalized.<br/>
 So you can just use it without editing it much.
 
 Simple Batch that does optimizations like disabeling Tasks, Services and much more while Gaming.<br/>
