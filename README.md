@@ -1,5 +1,6 @@
 # Windows 10 Gaming Optimization Batch Script
-Note: There is now a Cloner/Updater you can get it [here](https://github.com/crustySenpai/Gaming-Optimization-Cloner-Updater)
+There is now a Universal Version which has all Features removed that needed to be personalized.
+So you can just use it without editing it much.
 
 Simple Batch that does optimizations like disabeling Tasks, Services and much more while Gaming.<br/>
 All changes will only be temporary you also have the option to revert everything.<br/>
@@ -30,5 +31,3 @@ Here are my System Specs i use it on:<br/>
 - Nvidia GeForce GTX 960 2GB (Core Clock +230, Memory Clock +650)
 - Asus A88XM-A Mainboard
 - Windows 10 x64 Pro
-
-Note: There is now a workarround to change the Priority on Games with EasyAntiCheat.
