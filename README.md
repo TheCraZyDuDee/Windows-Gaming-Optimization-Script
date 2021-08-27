@@ -31,3 +31,17 @@ Here are my System Specs i use it on:<br/>
 - Nvidia GeForce GTX 960 2GB (Core Clock +230, Memory Clock +650)
 - Asus A88XM-A Mainboard
 - Windows 10 x64 Pro
+
+I also made an 3DMark Test with the Free Version:
+
+Before:
+
+- Time Spy Score: 2400
+- Graphics Score: 2579
+- CPU Score: 1725
+
+After:
+
+- Time Spy Score: 2402
+- Graphics Score: 2579
+- CPU Score: 1731
