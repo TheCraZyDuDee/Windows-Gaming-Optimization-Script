@@ -16,6 +16,7 @@ echo   //      Optimization       //
 echo  /////////////////////////////
 echo.
 echo A Script to temporary optimitze Windows to provide better Performance.
+echo Works on Windows 10/11.
 echo THIS ISN'T A GAME CHANGER!
 echo.
 echo Choose an Option:
