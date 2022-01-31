@@ -1,4 +1,4 @@
-# Windows 10 Gaming Optimization Batch Script
+# Windows 10/11 Gaming Optimization Batch Script
 There is now a Universal Version which has all Features removed that needed to be personalized.<br/>
 So you can just use it without editing it much.
 
