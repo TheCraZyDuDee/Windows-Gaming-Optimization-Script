@@ -4,6 +4,8 @@ Simple Batch that does optimizations like disabeling Tasks, Services and much mo
 All changes will only be temporary you also have the option to revert everything.<br/>
 Got tired of these "Game Boosters" that literally do the same shit or even do less.
 
+Windows Defender gets triggered when reseting for some reaseon however that's only a false positiv alarm it also doesn't show anything when clicking on it.
+
 Here is a list of things that the optimization will do:<br/>
 
 - You can change the Priority from Games to whatever you like
