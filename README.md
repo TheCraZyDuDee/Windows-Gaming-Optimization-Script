@@ -1,6 +1,4 @@
 # Windows 10/11 Gaming Optimization Batch Script
-There is now a Universal Version which has all Features removed that needed to be personalized.<br/>
-So you can just use it without editing it much.
 
 Simple Batch that does optimizations like disabeling Tasks, Services and much more while Gaming.<br/>
 All changes will only be temporary you also have the option to revert everything.<br/>
@@ -28,6 +26,9 @@ There is a Test Menu you can enter from every select screen when you type test_m
 
 In some Games like Left 4 Dead, Raft, Dead by Daylight and even Cemu Emulator it helped with my fps and lags a lot!<br/>
 This isn't a Game Changer just simple optimization so the System will have less work.
+
+There is now a Universal Version which has all Features removed that needed to be personalized.<br/>
+So you can just use it without editing it much.
 
 Here are my System Specs i use it on:<br/>
 
