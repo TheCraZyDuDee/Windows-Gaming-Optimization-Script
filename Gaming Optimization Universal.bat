@@ -8,7 +8,7 @@ exit /b
 
 :start
 cls
-color 12
+color 1f
 echo.
 echo     /////////////////////////////
 echo    //  crustySenpai's Gaming  //
@@ -122,10 +122,10 @@ taskkill /F /IM "explorer.exe"
 taskkill /F /IM "Microsoft.Photos.exe"
 taskkill /F /IM "WinStore.App.exe"
 taskkill /F /IM "TaskInputHost.exe"
+taskkill /F /IM "ShellExperienceHost.exe"
 taskkill /F /IM "NordVPN.exe"
 taskkill /F /IM "GameBarPresenceWriter.exe"
 taskkill /F /IM "atieclxx.exe"
-taskkill /F /IM "dwm.exe"
 taskkill /F /IM "voicemeeter.exe"
 taskkill /F /IM "Lightshot.exe"
 taskkill /F /IM "RtkNGUI64.exe"
@@ -179,7 +179,6 @@ wmic process where name="steam.exe" CALL setpriority "64"
 wmic process where name="steamservice.exe" CALL setpriority "64"
 wmic process where name="steamwebhelper.exe" CALL setpriority "64"
 wmic process where name="GameOverlayUI.exe" CALL setpriority "64"
-wmic process where name="lightcord.exe" CALL setpriority "32"
 
 echo.
 echo Done!
@@ -196,15 +195,17 @@ echo.
 goto clear_prefetch_temp
 
 :clear_prefetch_temp
-echo Emptying the Prefetch and Temp Folders...
+echo Emptying the Prefetch, Temp and SoftwareDistribution download Folders...
 echo.
 cd "C:\Windows\"
-del "Prefetch" /S /Q
+del "Prefetch" /S /Q /F
 del "Temp" /S /Q
 rmdir /S /Q "Prefetch"
-rmdir /S /Q "Temp"
 mkdir "Prefetch"
-mkdir "Temp"
+cd "C:\Windows\SoftwareDistribution"
+del "Download" /S /Q
+rmdir /S /Q "Download"
+mkdir "Download"
 cd "%localappdata%"
 del "Temp" /S /Q
 rmdir /S /Q "Temp"
@@ -212,6 +213,22 @@ mkdir "Temp"
 echo.
 echo Done!
 echo.
+goto disable_hpet
+
+:disable_hpet
+echo Disable HPET...
+echo.
+set HARDWARE_ID="ACPI\VEN_PNP&DEV_0103"
+cd "%~dp0\Tools"
+devcon /r disable *PNP0103
+echo.
+echo Done!
+goto flush_dns
+
+:flush_dns
+echo Flushing DNS...
+ipconfig/flushDNS
+echo Done!
 goto optimization_done
 
 :optimization_done
@@ -219,11 +236,6 @@ cls
 echo.
 echo Optimization Successfull!
 goto select_3
-
-:not_used
-wmic process where name="EpicGamesLauncher.exe" CALL setpriority "64"
-wmic process where name="EpicWebHelper.exe" CALL setpriority "64"
-reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\943c8cb6-6f93-4227-ad87-e9a3feec08d1 /f /v Attributes /t REG_DWORD /d 2
 
 :reset
 cls
@@ -273,12 +285,21 @@ wmic process where name="firefox.exe" CALL setpriority "32"
 wmic process where name="steam.exe" CALL setpriority "32"
 wmic process where name="steamservice.exe" CALL setpriority "32"
 wmic process where name="steamwebhelper.exe" CALL setpriority "32"
-wmic process where name="lightcord.exe" CALL setpriority "32"
 wmic process where name="EpicGamesLauncher.exe" CALL setpriority "32"
 wmic process where name="EpicWebHelper.exe" CALL setpriority "32"
 echo.
 echo Done!
 echo.
+goto enable_hpet
+
+:enable_hpet
+echo Enable HPET...
+echo.
+set HARDWARE_ID="ACPI\VEN_PNP&DEV_0103"
+cd "%~dp0\Tools"
+devcon /r enable *PNP0103
+echo.
+echo Done!
 goto reset_done
 
 :reset_done
@@ -286,9 +307,6 @@ cls
 echo.
 echo Settings reverted to default!
 goto select_2
-
-:not_used
-reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\943c8cb6-6f93-4227-ad87-e9a3feec08d1 /f /v Attributes /t REG_DWORD /d 1
 
 rem   /////////////////
 rem  //  Test Menu  //
