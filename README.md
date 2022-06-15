@@ -34,22 +34,22 @@ This isn't a Game Changer just simple optimization so the System will have less 
 
 Here are my System Specs i made the tests on:<br/>
 
-- AMD A8 5600k (OC on 4.2 GHz)
+- AMD A8 5600k (OC on 4.5 GHz)
 - 4x4 GB DDR3 1600MHz
-- Nvidia GeForce GTX 960 2GB (Core Clock +230, Memory Clock +650)
+- Nvidia GeForce GTX 960 2GB (Core Clock +200, Memory Clock +600)
 - Asus A88XM-A Mainboard
 - Windows 10 x64 Pro
 
-I also made an 3DMark Test with the Free Version:
+Here is an 3DMark Advanced Time Spy Test (you won't see much of a difference):
 
 Before:
 
-- Time Spy Score: 2400
-- Graphics Score: 2579 (overclocked)
-- CPU Score: 1725
+- Time Spy Score: 2101 - Good
+- Graphics score: 2165
+- CPU Score: 1801
 
-After:
+After (Highest Score made with A8 5600k & GTX 960 2GB):
 
-- Time Spy Score: 2402
-- Graphics Score: 2579 (overclocked)
-- CPU Score: 1731
+- Time Spy Score: 2404
+- Graphics Score: 2555 (overclocked)
+- CPU Score: 1803
