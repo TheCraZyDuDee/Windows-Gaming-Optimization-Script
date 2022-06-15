@@ -50,6 +50,6 @@ Before:
 
 After (Highest Score made with A8 5600k & GTX 960 2GB):
 
-- Time Spy Score: 2404
+- Time Spy Score: 2404 - Legendary
 - Graphics Score: 2555 (overclocked)
 - CPU Score: 1803
