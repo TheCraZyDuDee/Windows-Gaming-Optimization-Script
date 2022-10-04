@@ -27,7 +27,7 @@ Programs/Tools used in this Script (if needed):
 - Process Hacker
 - Explorer++
 - Intelligent standby list cleaner
-- devcon.exe (can be installed with [this](https://github.com/Drawbackz/DevCon-Installer)<br/>)
+- devcon.exe (can be installed with [this](https://github.com/Drawbackz/DevCon-Installer))<br/>
 
 It also has a Launcher integrated so you can launch your Games quick and optimize afterwards.<br/>
 Also it has small Menus like the Tool and App Menu where you can add Programs by editing the Script.
