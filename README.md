@@ -1,4 +1,6 @@
-# Windows 10/11 Gaming Optimization Batch Script
+# Windows 10/11 Gaming Optimization Batch Script (DISCONTINUED)
+
+## This Script won't get updated anymore since i finally could afford Hardware that won't see much benefits from the optimization anymore!
 
 Simple Batch that does optimizations like disabeling Tasks, Services and much more while Gaming.<br/>
 All changes will only be temporary you also have the option to revert everything.<br/>
