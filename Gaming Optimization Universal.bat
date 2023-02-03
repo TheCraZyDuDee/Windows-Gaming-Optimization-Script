@@ -1,5 +1,5 @@
 @echo off
-title Gaming Optimization by crustySenpai
+title Gaming Optimization Universal by crustySenpai
 
 echo Requesting Admin Permissions...
 net session >nul 2>&1 && goto :start
@@ -15,8 +15,9 @@ echo    //  crustySenpai's Gaming  //
 echo   //      Optimization       //
 echo  /////////////////////////////
 echo.
-echo A Script to temporary optimitze Windows to increase Performance / Input Latency.
+echo A Script to temporary optimitze Windows to provide better Performance.
 echo Works on Windows 10/11.
+echo THIS ISN'T A GAME CHANGER!
 echo.
 echo Choose an Option:
 echo.
@@ -30,55 +31,11 @@ goto select
 set /p c=Select your Option: 
 if "%c%"=="6969" goto why...
 if "%c%"=="test" goto test_menu
-if "%c%"=="1" goto choose_game
+if "%c%"=="1" goto optimize
 if "%c%"=="2" goto reset
 if "%c%"=="3" goto exit
 if "%c%" GTR "3" goto select
 if "%c%" LSS "1" goto select
-
-rem   /////////////////
-rem  //  Game List  //
-rem /////////////////
-
-:choose_game
-cls
-echo.
-echo Please select the Game you want to run:
-echo.
-echo 0 = Back
-echo 1 = example_game
-echo.
-goto game_select
-
-:choose_game_2
-cls
-echo.
-echo Please select the Game you want to run:
-echo.
-echo 0 = Back
-echo 1 = example_game
-echo.
-goto game_select_2
-
-:game_select
-set /p c=Select your Option: 
-if "%c%"=="6969" goto why...
-if "%c%"=="test" goto test_menu
-if "%c%"=="0" goto start
-if "%c%"=="1" goto example_game
-if "%c%" GTR "1" goto game_select
-
-:game_select_2
-set /p c=Select your Option: 
-if "%c%"=="6969" goto why...
-if "%c%"=="test" goto test_menu
-if "%c%"=="0" goto sosig
-if "%c%"=="1" goto set_priority_example_game
-if "%c%" GTR "1" goto game_select_2
-
-rem   /////////////
-rem  //  Menus  //
-rem /////////////
 
 :select_2
 echo.
@@ -93,21 +50,18 @@ goto select_22
 set /p c=Select your Option: 
 if "%c%"=="6969" goto why...
 if "%c%"=="test" goto test_menu
-if "%c%"=="1" goto choose_game
+if "%c%"=="1" goto optimize
 if "%c%"=="2" goto exit
 if "%c%" GTR "2" goto select_22
 if "%c%" LSS "1" goto select_22
 
 :select_3
 echo.
-color 1f
 echo Choose an Option:
 echo.
 echo 1 = Revert to default
-echo 2 = Start another Game
-echo 3 = Tool Menu
-echo 4 = App Menu
-echo 5 = Exit
+echo 2 = Tool Menu
+echo 3 = Exit
 echo.
 goto select_33
 
@@ -116,23 +70,18 @@ set /p c=Select your Option:
 if "%c%"=="6969" goto why...
 if "%c%"=="test" goto test_menu
 if "%c%"=="1" goto reset
-if "%c%"=="2" goto choose_game_2
-if "%c%"=="3" goto tool_menu
-if "%c%"=="4" goto app_menu
-if "%c%"=="5" goto exit
-if "%c%" GTR "5" goto select_33
+if "%c%"=="2" goto tool_menu
+if "%c%"=="3" goto exit
+if "%c%" GTR "3" goto select_33
 if "%c%" LSS "1" goto select_33
 
 :tool_menu
 cls
-echo.
 echo Select the Program you want to start:
 echo.
 echo 0 = Back
-echo 1 = Explorer
-echo 2 = Resource Monitor
-echo 3 = Soundmixer
-echo 4 = Task Manager
+echo 1 = Taskmanager
+echo 2 = Soundmixer
 echo.
 goto tool_select
 
@@ -141,192 +90,9 @@ set /p c=Select your Option:
 if "%c%"=="6969" goto why...
 if "%c%"=="test" goto test_menu
 if "%c%"=="0" goto sosig
-if "%c%"=="1" goto explorer
-if "%c%"=="2" goto resmon
-if "%c%"=="3" goto soundmixer
-if "%c%"=="4" goto taskmanager
-if "%c%" GTR "4" goto tool_select
-
-:app_menu
-cls
-echo.
-echo Select the Program you want to start:
-echo.
-echo 0 = Back
-echo 1 = example_program
-echo.
-goto app_select
-
-:app_select
-set /p c=Select your Option: 
-if "%c%"=="6969" goto why...
-if "%c%"=="test" goto test_menu
-if "%c%"=="0" goto sosig
-if "%c%"=="1" goto example_program
-if "%c%" GTR "1" goto app_select
-
-rem   /////////////////////
-rem  //  Game Startups  //
-rem /////////////////////
-
-:example_game
-cls
-echo.
-echo Starting Notepad...
-start "C:\Windows\System32\notepad.exe"
-echo.
-echo Notepad started Successfully!
-echo.
-goto wait_example_game
-
-rem other examples:
-rem start "C:\Program Files (x86)\Steam\steam.exe" steam://rungameid/381210 - starts Dead by Daylight on steam with it's appid
-rem start "" "com.epicgames.launcher://apps/0584d2013f0149a791e7b9bad0eec102%%3A6e563a2c0f5f46e3b4e88b5f4ed50cca%%3A9d2d0eb64d5c44529cece33fe2a46482?action=launch&silent=true" >nul - starts Grand Theft Auto V on Epic (id from shortcut)
-
-rem   ///////////////////////////
-rem  //  Waiting for Process  //
-rem ///////////////////////////
-
-:wait_example_game
-tasklist|find "notepad.exe" >nul
-if %errorlevel% == 0 goto set_priority_game_example
-timeout /t 1 >nul
-goto wait_example_game
-
-rem   /////////////////////
-rem  //  Priority Echos //
-rem /////////////////////
-
-:set_priority_example_game
-cls
-echo.
-echo What Priority you want the Game to run at?
-echo.
-echo 1 = Realtime (unstable)
-echo 2 = High (recommended)
-echo 3 = Above Normal
-echo 4 = Normal (default)
-echo 5 = Below Normal
-echo 6 = Low
-echo.
-goto priority_select_example_game
-
-:set_priority_example_game_2
-cls
-echo.
-echo What Priority you want the Game to run at?
-echo.
-echo 1 = Realtime (unstable)
-echo 2 = High (recommended)
-echo 3 = Above Normal
-echo 4 = Normal (default)
-echo 5 = Below Normal
-echo 6 = Low
-echo.
-goto priority_select_example_game_2
-
-rem   ////////////////////////
-rem  //  Priority Choices  //
-rem ////////////////////////
-
-:priority_select_example_game
-set /p c=Select your Option: 
-if "%c%"=="6969" goto why...
-if "%c%"=="test" goto test_menu
-if "%c%"=="1" goto example_game_p_rt
-if "%c%"=="2" goto example_game_p_high
-if "%c%"=="3" goto example_game_p_anormal
-if "%c%"=="4" goto example_game_p_normal
-if "%c%"=="5" goto example_game_p_bnormal
-if "%c%"=="6" goto example_game_p_low
-if "%c%" GTR "6" goto priority_select_example_game
-if "%c%" LSS "1" goto priority_select_example_game
-
-:priority_select_example_game_2
-set /p c=Select your Option: 
-if "%c%"=="6969" goto why...
-if "%c%"=="test" goto test_menu
-if "%c%"=="1" goto example_game_p_rt_2
-if "%c%"=="2" goto example_game_p_high_2
-if "%c%"=="3" goto example_game_p_anormal_2
-if "%c%"=="4" goto example_game_p_normal_2
-if "%c%"=="5" goto example_game_p_bnormal_2
-if "%c%"=="6" goto example_game_p_low_2
-if "%c%" GTR "6" goto priority_select_example_game_2
-if "%c%" LSS "1" goto priority_select_example_game_2
-
-rem   ////////////////////////
-rem  //  Process Priority  //
-rem ////////////////////////
-
-rem Priority Values: low = 64, below normal = 16384, normal = 32, above normal = 32768, high = 128, realtime = 256
-
-rem -----------------------example_game-----------------------------
-
-:example_game_p_rt
-wmic process where name="notepad.exe" CALL setpriority "256" >nul
-goto priority_done
-
-:example_game_p_high
-wmic process where name="notepad.exe" CALL setpriority "128" >nul
-goto priority_done
-
-:example_game_p_anormal
-wmic process where name="notepad.exe" CALL setpriority "32768" >nul
-goto priority_done
-
-:example_game_p_normal
-wmic process where name="notepad.exe" CALL setpriority "32" >nul
-goto priority_done
-
-:example_game_p_bnormal
-wmic process where name="notepad.exe" CALL setpriority "16384" >nul
-goto priority_done
-
-:example_game_p_low
-wmic process where name="notepad.exe" CALL setpriority "64" >nul
-goto priority_done
-
-:example_game_p_rt_2
-wmic process where name="notepad.exe" CALL setpriority "256" >nul
-goto priority_done_2
-
-:example_game_p_high_2
-wmic process where name="notepad.exe" CALL setpriority "128" >nul
-goto priority_done_2
-
-:example_game_p_anormal_2
-wmic process where name="notepad.exe" CALL setpriority "32768" >nul
-goto priority_done_2
-
-:example_game_p_normal_2
-wmic process where name="notepad.exe" CALL setpriority "32" >nul
-goto priority_done_2
-
-:example_game_p_bnormal_2
-wmic process where name="notepad.exe" CALL setpriority "16384" >nul
-goto priority_done_2
-
-:example_game_p_low_2
-wmic process where name="notepad.exe" CALL setpriority "64" >nul
-goto priority_done_2
-
-rem   /////////////////////
-rem  //  Priority Done  //
-rem /////////////////////
-
-:priority_done
-cls
-echo.
-echo Priority Sucessfully changed!
-echo.
-goto optimize
-
-:priority_done_2
-cls
-echo.
-echo Priority Sucessfully changed!
-goto select_3
+if "%c%"=="1" goto taskmanager
+if "%c%"=="2" goto soundmixer
+if "%c%" GTR "2" goto tool_select
 
 rem   /////////////////////////
 rem  //  Optimize & Revert  //
@@ -338,15 +104,6 @@ echo.
 echo Starting the Optimization.
 echo.
 echo This may take some time...
-echo.
-timeout /t 1 -nobreak >nul
-goto high_performance
-
-:high_performance
-echo Switching to the High Performance Powerplan...
-powercfg /s 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c
-echo.
-echo Powerplan sucessfully switched!
 echo.
 goto taskkill
 
@@ -426,7 +183,7 @@ wmic process where name="GameOverlayUI.exe" CALL setpriority "64"
 echo.
 echo Done!
 echo.
-goto clear_prefetch_temp
+goto clear_bin
 
 :clear_bin
 echo Emptying the Recycle Bin...
@@ -485,14 +242,6 @@ cls
 echo.
 echo Starting to revert everything.
 echo This may take some time...
-echo.
-goto balanced_power
-
-:balanced_power
-echo Switching to Balanced Powerplan...
-powercfg /s 381b4222-f694-41f0-9685-ff5bb260df2e
-echo.
-echo Powerplan sucessfully switched!
 echo.
 goto enable_tasks
 
@@ -571,14 +320,9 @@ echo.
 echo Please select an option:
 echo.
 echo 0 = Go Back to start
-echo 1 = choose_game
-echo 2 = choose_game_2
-echo 3 = select_2
-echo 4 = select_3
-echo 5 = tool_menu
-echo 6 = app_menu
-echo 7 = test_priority
-echo 8 = exit_warning
+echo 1 = select_2
+echo 2 = select_3
+echo 3 = tool_menu
 echo.
 goto test_select
 
@@ -586,81 +330,13 @@ goto test_select
 set /p c=Select your Option: 
 if "%c%"=="6969" goto why...
 if "%c%"=="0" goto start
-if "%c%"=="1" goto choose_game
-if "%c%"=="2" goto choose_game_2
-if "%c%"=="3" goto sosig_2
-if "%c%"=="4" goto sosig
-if "%c%"=="5" goto tool_menu
-if "%c%"=="6" goto app_menu
-if "%c%"=="7" goto test_priority
-if "%c%"=="8" goto exit_warning
-if "%c%" GTR "8" goto tool_select
-
-:test_priority
-cls
-echo.
-echo Select an Priority Menu:
-echo.
-echo 1 = set_priority_example_game
-echo 2 = set_priority_example_game_2
-echo.
-goto test_priority_select
-
-:test_priority_select
-set /p c=Select your Option: 
-if "%c%"=="test" goto test_menu
-if "%c%"=="1" goto set_priority_example_game
-if "%c%"=="2" goto set_priority_example_game_2
-if "%c%" LSS "1" goto test_priority_select
-if "%c%" GTR "2" goto test_priority_select
-
-rem   //////////////////////////////
-rem  //  Tools and App Startups  //
-rem //////////////////////////////
-
-:example_program
-echo Starting Notepad...
-start "" "C:\Windows\System32\notepad.exe"
-cls
-echo.
-echo Notepad started Successfully!
-goto select_3
-
-:explorer
-echo Starting Explorer...
-start "" "C:\Windows\explorer.exe"
-cls
-echo.
-echo Explorer started Successfully!
-goto select_3
-
-:taskmanager
-echo Starting Process Hacker...
-cd "%~dp0\Tools"
-start "" "Process Hacker\ProcessHacker.exe"
-cls
-echo.
-echo Process Hacker started Successfully!
-goto select_3
-
-:resmon
-echo Starting Resource Monitor...
-start resmon
-cls
-echo.
-echo Resource Monitor started Successfully!
-goto select_3
-
-:soundmixer
-Starting Soundmixer...
-start "" "SndVol.exe"
-cls
-echo.
-echo Soundmixer started Successfully!
-goto select_3
+if "%c%"=="1" goto sosig_2
+if "%c%"=="2" goto sosig
+if "%c%"=="3" goto tool_menu
+if "%c%" GTR "3" goto tool_select
 
 rem   ///////////////////
-rem  //  other stuff  //
+rem  //  Other Stuff  //
 rem ///////////////////
 
 :why...
@@ -677,22 +353,21 @@ goto select_3
 cls
 goto select_2
 
-:exit_warning
+:taskmanager
+echo Starting Taskmanager...
+start "" "taskmgr.exe"
 cls
-color 40
 echo.
-echo WARNING! When exiting now you can only start the script again by starting explorer.exe in Taskmanager! Are you sure?
-echo.
-echo 0 = No / 1 = Yes:
-echo.
-goto exit_proceed
+echo Taskmanager started Sucessfully!
+goto select_3
 
-:exit_proceed
-set /p c=Proceed? = 
-if "%c%"=="test" goto test_menu
-if "%c%"=="0" goto sosig
-if "%c%"=="1" goto exit
-if "%c%" GTR "1" goto exit_proceed
+:soundmixer
+Starting Soundmixer...
+start "" "SndVol.exe"
+cls
+echo.
+echo Soundmixer started Sucessfully!
+goto select_3
 
 :exit
 exit
