@@ -24,7 +24,7 @@ Here is a list of things that the optimization can/will do:<br/>
 - Flushes DNS (because it can)
 - and more...
 
-Programs/Tools used in this Script (if needed):
+Programs/Tools recommended to be implemented (if needed):
 
 - Process Hacker
 - Explorer++
@@ -32,12 +32,14 @@ Programs/Tools used in this Script (if needed):
 - devcon.exe (can be installed with [this](https://github.com/Drawbackz/DevCon-Installer))<br/>
 - MSI Afterburner
 
+Devcon was nessesary but don't remember for what lol
+
 It also has a Launcher integrated so you can launch your Games quick and optimize afterwards.<br/>
 Also it has small Menus like the Tool and App Menu where you can add Programs by editing the Script.
 
-This is just my personal Script configured for my own use and uploaded because i like to share.<br/>
-So if you wanna use it you need to completely re-edit the whole script (Changing Paths, adding Games, adding Tasks etc.).<br/>
-There is a Test Menu you can enter from every select screen when you type test_menu to test things when editing the Script.
+This is just a Template so more Features like disabling more Task / Services, auto Ocerclocking with MSI Afterburner or Programs named above could be implemented.<br/>
+Obviously you need to add games if you wanna use the Game Launcher.<br/>
+There is a Test Menu you can enter from every select screen when you type test to test things when editing the Script.
 
 In some Games like Left 4 Dead, Raft, Dead by Daylight and even Cemu Emulator it helped reducing input lag and improved fps a little.
 This isn't a Game Changer just simple optimization so the System will have less work.
