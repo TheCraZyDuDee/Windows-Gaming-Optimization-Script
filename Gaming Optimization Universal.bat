@@ -15,9 +15,8 @@ echo    //  crustySenpai's Gaming  //
 echo   //      Optimization       //
 echo  /////////////////////////////
 echo.
-echo A Script to temporary optimitze Windows to provide better Performance.
+echo A Script to temporary optimitze Windows to increase Performance / Input Latency.
 echo Works on Windows 10/11.
-echo THIS ISN'T A GAME CHANGER!
 echo.
 echo Choose an Option:
 echo.
@@ -57,6 +56,7 @@ if "%c%" LSS "1" goto select_22
 
 :select_3
 echo.
+color 1f
 echo Choose an Option:
 echo.
 echo 1 = Revert to default
@@ -71,7 +71,7 @@ if "%c%"=="6969" goto why...
 if "%c%"=="test" goto test_menu
 if "%c%"=="1" goto reset
 if "%c%"=="2" goto tool_menu
-if "%c%"=="3" goto exit
+if "%c%"=="3" goto exit_warning
 if "%c%" GTR "3" goto select_33
 if "%c%" LSS "1" goto select_33
 
@@ -80,8 +80,9 @@ cls
 echo Select the Program you want to start:
 echo.
 echo 0 = Back
-echo 1 = Taskmanager
+echo 1 = Resource Monitor
 echo 2 = Soundmixer
+echo 3 = Task Manager
 echo.
 goto tool_select
 
@@ -90,9 +91,10 @@ set /p c=Select your Option:
 if "%c%"=="6969" goto why...
 if "%c%"=="test" goto test_menu
 if "%c%"=="0" goto sosig
-if "%c%"=="1" goto taskmanager
+if "%c%"=="1" goto resmon
 if "%c%"=="2" goto soundmixer
-if "%c%" GTR "2" goto tool_select
+if "%c%"=="3" goto taskmanager
+if "%c%" GTR "3" goto tool_select
 
 rem   /////////////////////////
 rem  //  Optimize & Revert  //
@@ -323,6 +325,7 @@ echo 0 = Go Back to start
 echo 1 = select_2
 echo 2 = select_3
 echo 3 = tool_menu
+echo 4 = exit_warning
 echo.
 goto test_select
 
@@ -333,7 +336,8 @@ if "%c%"=="0" goto start
 if "%c%"=="1" goto sosig_2
 if "%c%"=="2" goto sosig
 if "%c%"=="3" goto tool_menu
-if "%c%" GTR "3" goto tool_select
+if "%c%"=="4" goto exit_warning
+if "%c%" GTR "4" goto tool_select
 
 rem   ///////////////////
 rem  //  Other Stuff  //
@@ -368,6 +372,23 @@ cls
 echo.
 echo Soundmixer started Sucessfully!
 goto select_3
+
+:exit_warning
+cls
+color 40
+echo.
+echo WARNING! When exiting now you can only start the script again by starting explorer.exe in Taskmanager! Are you sure?
+echo.
+echo 0 = No / 1 = Yes:
+echo.
+goto exit_proceed
+
+:exit_proceed
+set /p c=Proceed? = 
+if "%c%"=="test" goto test_menu
+if "%c%"=="0" goto sosig
+if "%c%"=="1" goto exit
+if "%c%" GTR "1" goto exit_proceed
 
 :exit
 exit
