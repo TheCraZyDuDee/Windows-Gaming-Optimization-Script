@@ -1,15 +1,12 @@
 # Windows 10/11 Gaming Optimization Batch Script
 
-## I unarchived this script since i'm working on a old Laptop and made myself a challenge to make it usable. Probably no big Updates coming.
-
 Simple Batch that does optimizations like disabeling Tasks, Services and much more while Gaming.<br/>
 All changes will only be temporary you also have the option to revert everything.<br/>
 Got annoyed of these "Game Boosters" that do less and give you some shitty bloatware.
 
-Windows Defender gets triggered when reseting for some reaseon however that's only a false positiv alarm it also doesn't show anything when clicking on it.
+Windows Defender gets triggered when reseting for some reason however that's only a false positiv alarm it also doesn't show anything when clicking on it.
 
 There is now a Universal Version which has all Features removed that needed to be personalized, you can use it without editing.<br/>
-However it will not get updated alot.
 
 Here is a list of things that the optimization can/will do:<br/>
 
