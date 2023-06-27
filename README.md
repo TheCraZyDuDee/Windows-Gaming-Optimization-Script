@@ -1,8 +1,7 @@
 # Windows 10/11 Gaming Optimization Batch Script
 
-Simple Batch that does optimizations like disabeling Tasks, Services and much more while Gaming.<br/>
-All changes will only be temporary you also have the option to revert everything.<br/>
-Got annoyed of these "Game Boosters" that do less and give you some shitty bloatware.
+Simple Batch that does optimizations like disabling Tasks, Services and much more while Gaming.<br/>
+All changes will only be temporary you also have the option to revert everything.
 
 Windows Defender gets triggered when reseting for some reason however that's only a false positiv alarm it also doesn't show anything when clicking on it.
 
@@ -11,25 +10,21 @@ There is now a Universal Version which has all Features removed that needed to b
 Here is a list of things that the optimization can/will do:<br/>
 
 - You can change the Priority from Games to whatever you like
-- Killing unessesary tasks (like Explorer etc.)
+- Killing unessesary tasks
 - Disabeling useless Services (to free up ram and maybe cpu usage)
 - Lower the Priority of some Processes (to give other processes more room)
 - Clears the Recycle Bin, Temp, Prefetch and SoftwareDistribution Download Folders (to free up space)
 - Disables HPET (High Precision Event Timer)
-- Changes Powerplan (needs to have the Ultimate Performance Plan edited and added to the script)
+- Changes Powerplan
 - Overclocks GPU (if MSI Afterburner is Installed and Profiles are set!)
 - Flushes DNS (because it can)
 - and more...
 
 Programs/Tools recommended to be implemented (if needed):
 
-- Process Hacker
-- Explorer++
-- Intelligent standby list cleaner
-- devcon.exe (can be installed with [this](https://github.com/Drawbackz/DevCon-Installer))<br/>
+- Intelligent standby list cleaner ([Recommended Settings](https://imgur.com/a/abwLUL1))
+- devcon.exe (only nessesary if you want to disable HPET, can be installed with [this](https://github.com/Drawbackz/DevCon-Installer))<br/>
 - MSI Afterburner
-
-Devcon was nessesary but don't remember for what lol
 
 It also has a Launcher integrated so you can launch your Games quick and optimize afterwards.<br/>
 Also it has small Menus like the Tool and App Menu where you can add Programs by editing the Script.
@@ -41,7 +36,7 @@ There is a Test Menu you can enter from every select screen when you type test t
 In some Games like Left 4 Dead, Raft, Dead by Daylight and even Cemu Emulator it helped reducing input lag and improved fps a little.
 This isn't a Game Changer just simple optimization so the System will have less work.
 
-Here are my System Specs i made the tests on:<br/>
+Here are my Old System Specs i made the tests on:<br/>
 
 - AMD A8 5600k (OC on 4.5 GHz)
 - 4x4 GB DDR3 1600MHz
@@ -49,7 +44,7 @@ Here are my System Specs i made the tests on:<br/>
 - Asus A88XM-A Mainboard
 - Windows 10 x64 Pro
 
-Here is an 3DMark Advanced Time Spy Test (you won't see much of a difference):
+Here is an 3DMark Advanced Time Spy Test (you won't see much of a difference exept for the OC):
 
 Before:
 
