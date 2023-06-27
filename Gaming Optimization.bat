@@ -15,7 +15,7 @@ echo    //  crustySenpai's Gaming  //
 echo   //      Optimization       //
 echo  /////////////////////////////
 echo.
-echo A Script to temporary optimitze Windows to increase Performance.
+echo A Script to temporary optimize Windows to increase Performance.
 echo Works on Windows 10/11.
 echo.
 echo Welcome %username%!
