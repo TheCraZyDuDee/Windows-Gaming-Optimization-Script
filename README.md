@@ -11,7 +11,7 @@ Here is a list of things that the optimization can/will do:<br/>
 
 - You can change the Priority from Games to whatever you like
 - Killing unessesary tasks
-- Disabeling useless Services (to free up ram and maybe cpu usage)
+- Disabling useless Services (to free up ram and maybe cpu usage)
 - Lower the Priority of some Processes (to give other processes more room)
 - Clears the Recycle Bin, Temp, Prefetch and SoftwareDistribution Download Folders (to free up space)
 - Disables HPET (High Precision Event Timer)
