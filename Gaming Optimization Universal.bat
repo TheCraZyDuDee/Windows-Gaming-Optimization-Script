@@ -15,8 +15,10 @@ echo    //  crustySenpai's Gaming  //
 echo   //      Optimization       //
 echo  /////////////////////////////
 echo.
-echo A Script to temporary optimitze Windows to increase Performance / Input Latency.
+echo A Script to temporary optimize Windows to increase Performance.
 echo Works on Windows 10/11.
+echo.
+echo Welcome %username%!
 echo.
 echo Choose an Option:
 echo.
@@ -28,7 +30,6 @@ goto select
 
 :select
 set /p c=Select your Option: 
-if "%c%"=="6969" goto why...
 if "%c%"=="test" goto test_menu
 if "%c%"=="1" goto optimize
 if "%c%"=="2" goto reset
@@ -47,7 +48,6 @@ goto select_22
 
 :select_22
 set /p c=Select your Option: 
-if "%c%"=="6969" goto why...
 if "%c%"=="test" goto test_menu
 if "%c%"=="1" goto optimize
 if "%c%"=="2" goto exit
@@ -67,7 +67,6 @@ goto select_33
 
 :select_33
 set /p c=Select your Option: 
-if "%c%"=="6969" goto why...
 if "%c%"=="test" goto test_menu
 if "%c%"=="1" goto reset
 if "%c%"=="2" goto tool_menu
@@ -88,7 +87,6 @@ goto tool_select
 
 :tool_select
 set /p c=Select your Option: 
-if "%c%"=="6969" goto why...
 if "%c%"=="test" goto test_menu
 if "%c%"=="0" goto sosig
 if "%c%"=="1" goto resmon
@@ -96,9 +94,9 @@ if "%c%"=="2" goto soundmixer
 if "%c%"=="3" goto taskmanager
 if "%c%" GTR "3" goto tool_select
 
-rem   /////////////////////////
-rem  //  Optimize & Revert  //
-rem /////////////////////////
+::   /////////////////////////
+::  //  Optimize & Revert  //
+:: /////////////////////////
 
 :optimize
 cls
@@ -112,28 +110,16 @@ goto taskkill
 :taskkill
 echo killing Tasks..
 echo.
-taskkill /F /IM "AdobeIPCBroker.exe"
-taskkill /F /IM "AdobeNotificationClient.exe"
-taskkill /F /IM "AdobeUpdateService.exe"
-taskkill /F /IM "CCLibrary.exe"
-taskkill /F /IM "CCXProcess.exe"
-taskkill /F /IM "Adobe Desktop Service.exe"
-taskkill /F /IM "Creative Cloud Helper.exe"
 taskkill /F /IM "CoreSync.exe"
 taskkill /F /IM "explorer.exe"
 taskkill /F /IM "Microsoft.Photos.exe"
 taskkill /F /IM "WinStore.App.exe"
 taskkill /F /IM "TaskInputHost.exe"
 taskkill /F /IM "ShellExperienceHost.exe"
-taskkill /F /IM "NordVPN.exe"
 taskkill /F /IM "GameBarPresenceWriter.exe"
 taskkill /F /IM "atieclxx.exe"
-taskkill /F /IM "voicemeeter.exe"
-taskkill /F /IM "Lightshot.exe"
 taskkill /F /IM "RtkNGUI64.exe"
 taskkill /F /IM "spoolsv.exe"
-taskkill /F /IM "EpicGamesLauncher.exe"
-taskkill /F /IM "EpicWebHelper.exe"
 echo.
 echo Done!
 echo.
@@ -142,16 +128,9 @@ goto servicekill
 :servicekill
 echo Killing Services...
 echo.
-net stop "AdobeUpdateService"
-net stop "AGMService"
-net stop "AGSService"
 net stop "Sense"
 net stop "seclogon"
-net stop "Net Driver HPZ12"
-net stop "Pml Driver HPZ12"
-net stop "HPSLPSVC"
 net stop "CDPSvc"
-net stop "nordvpn-service"
 net stop "CscService"
 net stop "PhoneSvc"
 net stop "Fax"
@@ -215,16 +194,6 @@ mkdir "Temp"
 echo.
 echo Done!
 echo.
-goto disable_hpet
-
-:disable_hpet
-echo Disable HPET...
-echo.
-set HARDWARE_ID="ACPI\VEN_PNP&DEV_0103"
-cd "%~dp0\Tools"
-devcon /r disable *PNP0103
-echo.
-echo Done!
 goto flush_dns
 
 :flush_dns
@@ -259,11 +228,7 @@ goto enable_services
 :enable_services
 echo Enabling Services...
 echo.
-net start "Net Driver HPZ12"
-net start "Pml Driver HPZ12"
-net start "HPSLPSVC"
 net start "CDPSvc"
-net start "nordvpn-service"
 net start "PhoneSvc"
 net start "SbieSvc"
 net start "SEMgrSvc"
@@ -287,21 +252,9 @@ wmic process where name="firefox.exe" CALL setpriority "32"
 wmic process where name="steam.exe" CALL setpriority "32"
 wmic process where name="steamservice.exe" CALL setpriority "32"
 wmic process where name="steamwebhelper.exe" CALL setpriority "32"
-wmic process where name="EpicGamesLauncher.exe" CALL setpriority "32"
-wmic process where name="EpicWebHelper.exe" CALL setpriority "32"
 echo.
 echo Done!
 echo.
-goto enable_hpet
-
-:enable_hpet
-echo Enable HPET...
-echo.
-set HARDWARE_ID="ACPI\VEN_PNP&DEV_0103"
-cd "%~dp0\Tools"
-devcon /r enable *PNP0103
-echo.
-echo Done!
 goto reset_done
 
 :reset_done
@@ -310,9 +263,9 @@ echo.
 echo Settings reverted to default!
 goto select_2
 
-rem   /////////////////
-rem  //  Test Menu  //
-rem /////////////////
+::   /////////////////
+::  //  Test Menu  //
+:: /////////////////
 
 :test_menu
 cls
@@ -339,15 +292,9 @@ if "%c%"=="3" goto tool_menu
 if "%c%"=="4" goto exit_warning
 if "%c%" GTR "4" goto tool_select
 
-rem   ///////////////////
-rem  //  Other Stuff  //
-rem ///////////////////
-
-:why...
-echo that's not what you supposed to do here...
-echo anyway if you're already here follow my YouTube: https://www.youtube.com/channel/UCPaLYkLQVanuXOrBSxrZyAQ
-pause
-exit
+::   ///////////////////
+::  //  Other Stuff  //
+:: ///////////////////
 
 :sosig
 cls
@@ -359,7 +306,7 @@ goto select_2
 
 :taskmanager
 echo Starting Taskmanager...
-start "" "taskmgr.exe"
+start taskmgr
 cls
 echo.
 echo Taskmanager started Sucessfully!
@@ -367,7 +314,7 @@ goto select_3
 
 :soundmixer
 Starting Soundmixer...
-start "" "SndVol.exe"
+start sndvol
 cls
 echo.
 echo Soundmixer started Sucessfully!
