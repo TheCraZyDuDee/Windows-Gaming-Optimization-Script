@@ -3,7 +3,8 @@
 Simple Batch that does optimizations like disabling Tasks, Services and much more while Gaming.<br/>
 All changes will only be temporary you also have the option to revert everything.
 
-Windows Defender gets triggered when reseting for some reason however that's only a false positiv alarm it also doesn't show anything when clicking on it.
+Windows Defender gets triggered because we disable Windows Defender Advanced Threat Protection-Service (Sense).<br/>
+You might wan't to remove that if you're unsure.
 
 There is now a Universal Version which has all Features removed that needed to be personalized, you can use it without editing.<br/>
 
