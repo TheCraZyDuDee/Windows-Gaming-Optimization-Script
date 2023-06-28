@@ -15,7 +15,7 @@ echo    //  crustySenpai's Gaming  //
 echo   //      Optimization       //
 echo  /////////////////////////////
 echo.
-echo A Script to temporary optimize Windows to increase Performance.
+echo A Script to temporary optimitze Windows to increase Performance.
 echo Works on Windows 10/11.
 echo.
 echo Welcome %username%!
@@ -805,26 +805,74 @@ echo.
 goto servicekill
 
 :servicekill
-echo Killing Services...
+echo Disable/Killing Services...
 echo.
-net stop "Sense"
-net stop "seclogon"
-net stop "CDPSvc"
-net stop "CscService"
-net stop "PhoneSvc"
-net stop "Fax"
-net stop "SbieSvc"
-net stop "InstallService"
-net stop "icssvc"
-net stop "SEMgrSvc"
-net stop "SmsRouter"
-net stop "Spooler"
-net stop "SysMain"
-net stop "WpnService"
-net stop "WSearch"
-net stop "stisvc"
-net stop "TabletInputService"
-net stop "DiagTrack"
+sc config "seclogon" start= disabled
+sc config "CDPSvc" start= disabled
+sc config "CscService" start= disabled
+sc config "PhoneSvc" start= disabled
+sc config "Fax" start= disabled
+sc config "InstallService" start= disabled
+sc config "icssvc" start= disabled
+sc config "SEMgrSvc" start= disabled
+sc config "SmsRouter" start= disabled
+sc config "Spooler" start= disabled
+sc config "SysMain" start= disabled
+sc config "WpnService" start= disabled
+sc config "WSearch" start= disabled
+sc config "stisvc" start= disabled
+sc config "TabletInputService" start= disabled
+sc config "DiagTrack" start= disabled
+sc config "MapsBroker" start= disable
+sc config "wscsvc" start= disable
+sc config "CertPropSvc" start= disable
+sc config "WbioSrvc" start= disable
+sc config "wuauserv" start= disable
+sc config "BthAvctpSvc" start= disable
+sc config "BDESVC" start= disable
+sc config "DPS" start= disable
+sc config "fhsvc" start =disable
+sc config "SharedAccess" start= disable
+sc config "Netlogon" start= disable
+sc config "PcaSvc" start= disable
+sc config "WpcMonSvc" start= disable
+sc config "lmhosts" start= disable
+sc config "WerSvc" start= disable
+sc config "FrameServer" start= disable
+sc config "wisvc" start= disable
+sc stop "seclogon"
+sc stop "CDPSvc"
+sc stop "CscService"
+sc stop "PhoneSvc"
+sc stop "Fax"
+sc stop "InstallService"
+sc stop "icssvc"
+sc stop "SEMgrSvc"
+sc stop "SmsRouter"
+sc stop "Spooler"
+sc stop "SysMain"
+sc stop "WpnService"
+sc stop "WSearch"
+sc stop "stisvc"
+sc stop "TabletInputService"
+sc stop "DiagTrack"
+sc stop "MapsBroker"
+sc stop "wscsvc"
+sc stop "CertPropSvc"
+sc stop "WbioSrvc"
+sc stop "wuauserv"
+sc stop "BthAvctpSvc"
+sc stop "BDESVC"
+sc stop "DPS"
+sc stop "fhsvc"
+sc stop "SharedAccess"
+sc stop "Netlogon"
+sc stop "PcaSvc"
+sc stop "WpcMonSvc"
+sc stop "lmhosts"
+sc stop "WerSvc"
+sc stop "FrameServer"
+sc stop "wisvc"
 echo.
 echo Done!
 echo.
@@ -950,17 +998,55 @@ goto enable_services
 :enable_services
 echo Enabling Services...
 echo.
-net start "CDPSvc"
-net start "PhoneSvc"
-net start "SbieSvc"
-net start "SEMgrSvc"
-net start "Spooler"
-net start "SysMain"
-net start "WpnService"
-net start "WSearch"
-net start "stisvc"
-net start "TabletInputService"
-net start "DiagTrack"
+sc config "seclogon" start= demand
+sc config "CDPSvc" start= delayed-auto
+sc config "CscService" start= demand
+sc config "PhoneSvc" start= demand
+sc config "Fax" start= demand
+sc config "InstallService" start= demand
+sc config "icssvc" start= demand
+sc config "SEMgrSvc" start= demand
+sc config "SmsRouter" start= demand
+sc config "Spooler" start= auto
+sc config "SysMain" start= auto
+sc config "WpnService" start= auto
+sc config "WSearch" start= delayed-auto
+sc config "stisvc" start= auto
+sc config "TabletInputService" start= demand
+sc config "DiagTrack" start= auto
+sc config "MapsBroker" start= delayed-auto
+sc config "wscsvc" start= delayed-auto
+sc config "CertPropSvc" start= demand
+sc config "WbioSrvc" start= demand
+sc config "wuauserv" start= demand
+sc config "BthAvctpSvc" start= demand
+sc config "BDESVC" start= demand
+sc config "DPS" start= auto
+sc config "fhsvc" start =demand
+sc config "SharedAccess" start= demand
+sc config "Netlogon" start= demand
+sc config "PcaSvc" start= demand
+sc config "WpcMonSvc" start= demand
+sc config "lmhosts" start= demand
+sc config "WerSvc" start= demand
+sc config "FrameServer" start= demand
+sc config "wisvc" start= demand
+sc start "CDPSvc"
+sc start "InstallService"
+sc start "SEMgrSvc"
+sc start "Spooler"
+sc start "SysMain"
+sc start "WpnService"
+sc start "WSearch"
+sc start "stisvc"
+sc start "TabletInputService"
+sc start "DiagTrack"
+sc start "wscsvc"
+sc start "WbioSrvc"
+sc start "BthAvctpSvc"
+sc start "DPS"
+sc start "PcaSvc"
+sc start "lmhosts"
 echo.
 echo Done!
 echo.
