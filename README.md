@@ -3,7 +3,7 @@
 Simple Batch that does optimizations like disabling Tasks, Services and much more while Gaming.<br/>
 All changes will only be temporary you also have the option to revert everything.
 
-There is now a Universal Version which has all Features removed that needed to be personalized, you can use it without editing.<br/>
+Universal Version available for people that just want do download and run.<br/>
 
 Here is a list of things that the optimization can/will do:<br/>
 
