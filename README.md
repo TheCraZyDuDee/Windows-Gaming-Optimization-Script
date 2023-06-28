@@ -23,7 +23,7 @@ Here is a list of things that the optimization can/will do:<br/>
 
 Programs/Tools recommended to be implemented (if needed):
 
-- Intelligent standby list cleaner ([Recommended Settings](https://i.imgur.com/a/abwLUL1))
+- Intelligent standby list cleaner ([Recommended Settings](https://i.imgur.com/VzWXyA7.png))
 - devcon.exe (only nessesary if you want to disable HPET, can be installed with [this](https://github.com/Drawbackz/DevCon-Installer))<br/>
 - MSI Afterburner
 
