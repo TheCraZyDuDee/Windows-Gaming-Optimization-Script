@@ -1,5 +1,5 @@
 @echo off
-title Gaming Optimization by crustySenpai
+title Gaming Optimization
 
 echo Requesting Admin Permissions...
 net session >nul 2>&1 && goto :start
@@ -138,7 +138,6 @@ if "%c%" LSS "1" goto select_33
 
 :tool_menu
 cls
-echo.
 echo Select the Program you want to start:
 echo.
 echo 0 = Back
@@ -146,6 +145,7 @@ echo 1 = Explorer
 echo 2 = Resource Monitor
 echo 3 = Soundmixer
 echo 4 = Task Manager
+echo 5 = Command Prompt
 echo.
 goto tool_select
 
@@ -157,7 +157,8 @@ if "%c%"=="1" goto explorer
 if "%c%"=="2" goto resmon
 if "%c%"=="3" goto soundmixer
 if "%c%"=="4" goto taskmanager
-if "%c%" GTR "4" goto tool_select
+if "%c%"=="5" goto cmd
+if "%c%" GTR "5" goto tool_select
 
 :app_menu
 cls
@@ -782,7 +783,7 @@ goto islc
 :islc
 echo Starting Intelligent standby list cleaner (ISLC)
 echo.
-start "" /D "C:\Program Files (x86)\Intelligent standby list cleaner" "ISLC.exe" -minimized
+start "" /D "C:\Program Files\Intelligent standby list cleaner" "Intelligent standby list cleaner ISLC.exe" -minimized
 echo Done!
 echo.
 goto taskkill
@@ -823,23 +824,22 @@ sc config "WSearch" start= disabled
 sc config "stisvc" start= disabled
 sc config "TabletInputService" start= disabled
 sc config "DiagTrack" start= disabled
-sc config "MapsBroker" start= disable
-sc config "wscsvc" start= disable
-sc config "CertPropSvc" start= disable
-sc config "WbioSrvc" start= disable
-sc config "wuauserv" start= disable
-sc config "BthAvctpSvc" start= disable
-sc config "BDESVC" start= disable
-sc config "DPS" start= disable
-sc config "fhsvc" start =disable
-sc config "SharedAccess" start= disable
-sc config "Netlogon" start= disable
-sc config "PcaSvc" start= disable
-sc config "WpcMonSvc" start= disable
-sc config "lmhosts" start= disable
-sc config "WerSvc" start= disable
-sc config "FrameServer" start= disable
-sc config "wisvc" start= disable
+sc config "MapsBroker" start= disabled
+sc config "CertPropSvc" start= disabled
+sc config "WbioSrvc" start= disabled
+sc config "wuauserv" start= disabled
+sc config "BthAvctpSvc" start= disabled
+sc config "BDESVC" start= disabled
+sc config "DPS" start= disabled
+sc config "fhsvc" start = disabled
+sc config "SharedAccess" start= disabled
+sc config "Netlogon" start= disabled
+sc config "PcaSvc" start= disabled
+sc config "WpcMonSvc" start= disabled
+sc config "lmhosts" start= disabled
+sc config "WerSvc" start= disabled
+sc config "FrameServer" start= disabled
+sc config "wisvc" start= disabled
 sc stop "seclogon"
 sc stop "CDPSvc"
 sc stop "CscService"
@@ -857,7 +857,6 @@ sc stop "stisvc"
 sc stop "TabletInputService"
 sc stop "DiagTrack"
 sc stop "MapsBroker"
-sc stop "wscsvc"
 sc stop "CertPropSvc"
 sc stop "WbioSrvc"
 sc stop "wuauserv"
@@ -927,7 +926,7 @@ echo.
 goto disable_hpet
 
 :disable_hpet
-:: if you're able to disable hpet in your bios you don't need this!
+:: if you're able to disable hpet in your bios you don't need this (makes devcon useless)!
 echo Disable HPET...
 echo.
 set HARDWARE_ID="ACPI\VEN_PNP&DEV_0103"
@@ -1015,14 +1014,13 @@ sc config "stisvc" start= auto
 sc config "TabletInputService" start= demand
 sc config "DiagTrack" start= auto
 sc config "MapsBroker" start= delayed-auto
-sc config "wscsvc" start= delayed-auto
 sc config "CertPropSvc" start= demand
 sc config "WbioSrvc" start= demand
 sc config "wuauserv" start= demand
 sc config "BthAvctpSvc" start= demand
 sc config "BDESVC" start= demand
 sc config "DPS" start= auto
-sc config "fhsvc" start =demand
+sc config "fhsvc" start = demand
 sc config "SharedAccess" start= demand
 sc config "Netlogon" start= demand
 sc config "PcaSvc" start= demand
@@ -1041,7 +1039,6 @@ sc start "WSearch"
 sc start "stisvc"
 sc start "TabletInputService"
 sc start "DiagTrack"
-sc start "wscsvc"
 sc start "WbioSrvc"
 sc start "BthAvctpSvc"
 sc start "DPS"
@@ -1151,7 +1148,7 @@ echo Starting Notepad...
 start "" /D "C:\Windows\System32" "notepad.exe"
 cls
 echo.
-echo Notepad started Successfully!
+echo Notepad started successfully!
 goto select_3
 
 :explorer
@@ -1159,7 +1156,7 @@ echo Starting Explorer...
 start "" /D "C:\Windows" "explorer.exe"
 cls
 echo.
-echo Explorer started Successfully!
+echo Explorer started successfully!
 goto select_3
 
 :taskmanager
@@ -1167,7 +1164,7 @@ echo Starting Taskmanager...
 start taskmgr
 cls
 echo.
-echo Taskmanager started Successfully!
+echo Taskmanager started successfully!
 goto select_3
 
 :resmon
@@ -1175,7 +1172,15 @@ echo Starting Resource Monitor...
 start resmon
 cls
 echo.
-echo Resource Monitor started Successfully!
+echo Resource Monitor started successfully!
+goto select_3
+
+:cmd
+echo Staring Command Prompt...
+start cmd
+cls
+echo.
+echo Command Prompt started successfully!
 goto select_3
 
 :soundmixer
@@ -1183,7 +1188,7 @@ Starting Soundmixer...
 start sndvol
 cls
 echo.
-echo Soundmixer started Successfully!
+echo Soundmixer started successfully!
 goto select_3
 
 ::   ///////////////////
