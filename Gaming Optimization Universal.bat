@@ -196,8 +196,6 @@ sc stop "lmhosts"
 sc stop "WerSvc"
 sc stop "FrameServer"
 sc stop "wisvc"
-pause
-pause
 echo.
 echo Done!
 echo.
