@@ -298,7 +298,7 @@ if %errorlevel% == 0 goto set_priority_example_steam
 timeout /t 1 >nul
 goto wait_example_steam
 
-:wait_example_game_steam_2
+:wait_example_steam_2
 tasklist|find "csgo.exe" >nul
 if %errorlevel% == 0 goto set_priority_example_steam_2
 timeout /t 1 >nul
@@ -1176,7 +1176,7 @@ echo Resource Monitor started successfully!
 goto select_3
 
 :cmd
-echo Staring Command Prompt...
+echo Starting Command Prompt...
 start cmd
 cls
 echo.
@@ -1184,7 +1184,7 @@ echo Command Prompt started successfully!
 goto select_3
 
 :soundmixer
-Starting Soundmixer...
+echo Starting Soundmixer...
 start sndvol
 cls
 echo.
