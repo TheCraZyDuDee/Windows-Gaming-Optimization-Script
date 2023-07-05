@@ -415,7 +415,7 @@ echo Resource Monitor started successfully!
 goto select_3
 ´
 :cmd
-echo Staring Command Prompt...
+echo Starting Command Prompt...
 start cmd
 cls
 echo.
@@ -423,7 +423,7 @@ echo Command Prompt started successfully!
 goto select_3
 
 :soundmixer
-Starting Soundmixer...
+echo Starting Soundmixer...
 start sndvol
 cls
 echo.
