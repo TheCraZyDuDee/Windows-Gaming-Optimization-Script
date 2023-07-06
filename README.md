@@ -4,7 +4,13 @@
 Simple Batch that does optimizations like disabling Tasks, Services and much more while Gaming.<br/>
 All changes will only be temporary you also have the option to revert everything.
 
-Universal Version available for people that just want do download and run.<br/>
+While this works on both Windows 10/11 it's mostly tweaked for 10 since that is the version i'm using. 
+
+There are currently 2 Versions available:<br/>
+Gaming Optimization.bat - Needs to be personalized by the User since it's meant to have way more features.<br/>
+Gaming Optimization Universal.bat (Recommended for most People) - Version that doesn't need any changes from the User just download & run.
+
+Main Focus will probably go to the Universal Version since it's the one i personally use myself.
 
 Here is a list of things that the optimization can/will do:<br/>
 
@@ -17,6 +23,7 @@ Here is a list of things that the optimization can/will do:<br/>
 - Changes Powerplan
 - Overclocks GPU (if MSI Afterburner is Installed and Profiles are set!)
 - Flushes DNS (because it can)
+- Disable DWM (Desktop Window Manager, currently Windows 10 only!)
 - and more...
 
 Programs/Tools recommended to be implemented (if needed):
