@@ -61,7 +61,8 @@ echo Choose an Option:
 echo.
 echo 1 = Revert to default
 echo 2 = Tool Menu
-echo 3 = Exit
+echo 3 = Extras
+echo 4 = Exit
 echo.
 goto select_33
 
@@ -70,8 +71,9 @@ set /p c=Select your Option:
 if "%c%"=="test" goto test_menu
 if "%c%"=="1" goto reset
 if "%c%"=="2" goto tool_menu
-if "%c%"=="3" goto exit_warning
-if "%c%" GTR "3" goto select_33
+if "%c%"=="3" goto extra_menu
+if "%c%"=="4" goto exit_warning
+if "%c%" GTR "4" goto select_33
 if "%c%" LSS "1" goto select_33
 
 :tool_menu
@@ -79,11 +81,10 @@ cls
 echo Select the Program you want to start:
 echo.
 echo 0 = Back
-echo 1 = Explorer
-echo 2 = Resource Monitor
-echo 3 = Soundmixer
-echo 4 = Task Manager
-echo 5 = Command Prompt
+echo 1 = Resource Monitor
+echo 2 = Soundmixer
+echo 3 = Task Manager
+echo 4 = Command Prompt
 echo.
 goto tool_select
 
@@ -91,12 +92,28 @@ goto tool_select
 set /p c=Select your Option: 
 if "%c%"=="test" goto test_menu
 if "%c%"=="0" goto sosig
-if "%c%"=="1" goto explorer
-if "%c%"=="2" goto resmon
-if "%c%"=="3" goto soundmixer
-if "%c%"=="4" goto taskmanager
-if "%c%"=="5" goto cmd
-if "%c%" GTR "5" goto tool_select
+if "%c%"=="1" goto resmon
+if "%c%"=="2" goto soundmixer
+if "%c%"=="3" goto taskmanager
+if "%c%"=="4" goto cmd
+if "%c%" GTR "4" goto tool_select
+
+:extra_menu
+cls
+echo What do you want to do?
+echo.
+echo 0 = Back
+echo 1 = Disable/Enable DWM (Experimental)
+echo.
+goto extra_select
+
+:extra_select
+set /p c=Select your Option: 
+if "%c%"=="test" goto test_menu
+if "%c%"=="0" goto sosig
+if "%c%"=="1" goto dwm_check
+if "%c%" GTR "1" goto extra_select
+
 
 ::   /////////////////////////
 ::  //  Optimize & Revert  //
@@ -109,9 +126,7 @@ echo Starting the Optimization.
 echo.
 echo This may take some time...
 echo.
-goto taskkill
 
-:taskkill
 echo killing Tasks..
 echo.
 taskkill /F /IM "explorer.exe"
@@ -126,9 +141,7 @@ taskkill /F /IM "spoolsv.exe"
 echo.
 echo Done!
 echo.
-goto servicekill
 
-:servicekill
 echo Killing Services...
 echo.
 @echo off
@@ -199,9 +212,7 @@ sc stop "wisvc"
 echo.
 echo Done!
 echo.
-goto lower_priority
 
-:lower_priority
 echo Lowering Prioritys...
 echo.
 wmic process where name="chrome.exe" CALL setpriority "16384"
@@ -214,18 +225,14 @@ wmic process where name="GameOverlayUI.exe" CALL setpriority "64"
 echo.
 echo Done!
 echo.
-goto clear_bin
 
-:clear_bin
 echo Emptying the Recycle Bin...
 echo.
 rd /s /q C:\$Recycle.bin
 echo.
 echo Done!
 echo.
-goto clear_prefetch_temp
 
-:clear_prefetch_temp
 echo Emptying the Prefetch, Temp and SoftwareDistribution download Folders...
 echo.
 cd "C:\Windows\"
@@ -244,18 +251,14 @@ mkdir "Temp"
 echo.
 echo Done!
 echo.
-goto flush_dns
 
-:flush_dns
 echo Flushing DNS...
 ipconfig/flushDNS
 echo Done!
-goto optimization_done
 
-:optimization_done
 cls
 echo.
-echo Optimization Successfull!
+echo Optimization successfull!
 goto select_3
 
 :reset
@@ -264,18 +267,20 @@ echo.
 echo Starting to revert everything.
 echo This may take some time...
 echo.
-goto enable_tasks
 
-:enable_tasks
+tasklist|find "dwm.exe" >nul
+if %errorlevel% == 0 goto go
+"%~dp0\Tools\PSSuspend\pssuspend.exe" -r winlogon.exe -nobanner
+goto go
+
+:go
 echo Enabling Tasks...
 echo.
 start explorer.exe
 echo.
 echo Done!
 echo.
-goto enable_services
 
-:enable_services
 echo Enabling Services...
 echo.
 sc config "seclogon" start= demand
@@ -328,9 +333,7 @@ sc start "lmhosts"
 echo.
 echo Done!
 echo.
-goto reset_priority
 
-:reset_priority
 echo Revert Priority changes...
 echo.
 wmic process where name="chrome.exe" CALL setpriority "32"
@@ -341,9 +344,7 @@ wmic process where name="steamwebhelper.exe" CALL setpriority "32"
 echo.
 echo Done!
 echo.
-goto reset_done
 
-:reset_done
 cls
 echo.
 echo Settings reverted to default!
@@ -364,7 +365,8 @@ echo 0 = Go Back to start
 echo 1 = select_2
 echo 2 = select_3
 echo 3 = tool_menu
-echo 4 = exit_warning
+echo 4 = extra_menu
+echo 5 = exit_warning
 echo.
 goto test_select
 
@@ -375,8 +377,9 @@ if "%c%"=="0" goto start
 if "%c%"=="1" goto sosig_2
 if "%c%"=="2" goto sosig
 if "%c%"=="3" goto tool_menu
-if "%c%"=="4" goto exit_warning
-if "%c%" GTR "4" goto tool_select
+if "%c%"=="4" goto extra_menu
+if "%c%"=="5" goto exit_warning
+if "%c%" GTR "5" goto tool_select
 
 ::   ///////////////////
 ::  //  Other Stuff  //
@@ -389,14 +392,6 @@ goto select_3
 :sosig_2
 cls
 goto select_2
-
-:explorer
-echo Starting Explorer...
-start "" /D "C:\Windows" "explorer.exe"
-cls
-echo.
-echo Explorer started successfully!
-goto select_3
 
 :taskmanager
 echo Starting Taskmanager...
@@ -430,13 +425,74 @@ echo.
 echo Soundmixer started successfully!
 goto select_3
 
+:dwm_check
+if exist "%~dp0\Tools\PSSuspend\pssuspend.exe" goto dwm_disable
+cls
+echo.
+echo Disabling DWM requires the Tool PSSuspend, do you want do download it now?
+echo.
+echo 0 = No / 1 = Yes
+echo.
+goto dwm_check_choice
+
+:dwm_check_choice
+set /p c=Select your Option: 
+if "%c%"=="test" goto test_menu
+if "%c%"=="0" goto sosig
+if "%c%"=="1" goto dwm_download
+if "%c%" GTR "1" goto select_22
+
+:dwm_download
+cls
+echo.
+echo Downloading PSSuspend...
+cd %~dp0
+mkdir Tools\PSSuspend
+powershell -Command "Start-BitsTransfer "https://live.sysinternals.com/pssuspend.exe" "Tools\PSSuspend""
+cd C:\Windows\System32
+cls
+echo.
+echo PSSuspend downloaded successfully!
+goto select_3
+
+:dwm_disable
+tasklist|find "dwm.exe" >nul
+if %errorlevel% == 1 goto dwm_enable
+cls
+echo.
+echo Disable DWM...
+"%~dp0\Tools\PSSuspend\pssuspend.exe" winlogon.exe -nobanner
+taskkill /F /IM "explorer.exe"
+taskkill /F /IM "SearchApp.exe"
+taskkill /F /IM "TextInputHost.exe"
+taskkill /F /IM "StartMenuExperienceHost.exe"
+taskkill /F /IM "ShellExperienceHost.exe"
+taskkill /F /IM "dwm.exe"
+cls
+echo.
+echo DWM disabled successfully!
+goto select_3
+
+:dwm_enable
+cls
+echo.
+echo Enable DWM...
+tasklist|find "dwm.exe" >nul
+if %errorlevel% == 0 goto sosig
+"%~dp0\Tools\PSSuspend\pssuspend.exe" -r winlogon.exe -nobanner
+cls
+echo.
+echo DWM enabled successfully!
+goto select_3
+
+
 :exit_warning
 cls
 color 40
 echo.
 echo WARNING! When exiting now you can only start the script again by starting explorer.exe in Taskmanager! Are you sure?
 echo.
-echo 0 = No / 1 = Yes:
+echo 0 = No / 1 = Yes
 echo.
 goto exit_proceed
 
