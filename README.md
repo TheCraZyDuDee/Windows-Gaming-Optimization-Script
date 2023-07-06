@@ -4,7 +4,7 @@
 Simple Batch that does optimizations like disabling Tasks, Services and much more while Gaming.<br/>
 All changes will only be temporary you also have the option to revert everything.
 
-While this works on both Windows 10/11 it's mostly tweaked for 10 since that is the version i'm using. 
+While this works on both Windows 10/11 it's mostly tweaked for 10 since that's the version i'm working on. 
 
 There are currently 2 Versions available:<br/>
 Gaming Optimization.bat - Needs to be personalized by the User since it's meant to have way more features (Game Launcher for example).<br/>
