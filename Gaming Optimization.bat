@@ -141,11 +141,10 @@ cls
 echo Select the Program you want to start:
 echo.
 echo 0 = Back
-echo 1 = Explorer
-echo 2 = Resource Monitor
-echo 3 = Soundmixer
-echo 4 = Task Manager
-echo 5 = Command Prompt
+echo 1 = Resource Monitor
+echo 2 = Soundmixer
+echo 3 = Task Manager
+echo 4 = Command Prompt
 echo.
 goto tool_select
 
@@ -153,12 +152,11 @@ goto tool_select
 set /p c=Select your Option: 
 if "%c%"=="test" goto test_menu
 if "%c%"=="0" goto sosig
-if "%c%"=="1" goto explorer
-if "%c%"=="2" goto resmon
-if "%c%"=="3" goto soundmixer
-if "%c%"=="4" goto taskmanager
-if "%c%"=="5" goto cmd
-if "%c%" GTR "5" goto tool_select
+if "%c%"=="1" goto resmon
+if "%c%"=="2" goto soundmixer
+if "%c%"=="3" goto taskmanager
+if "%c%"=="4" goto cmd
+if "%c%" GTR "4" goto tool_select
 
 :app_menu
 cls
@@ -750,9 +748,7 @@ echo.
 echo This may take some time...
 echo.
 timeout /t 1 -nobreak >nul
-goto high_performance
 
-:high_performance
 :: you can also use the ultimate performance powerplan, to unlock it run a Command Prompt as admin and run the following: powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61
 :: now copy the GUID you get and replace it with the one here
 echo Switching to the High Performance Powerplan...
@@ -760,11 +756,8 @@ powercfg /s 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c
 echo.
 echo Powerplan successfully switched!
 echo.
-goto taskkill
 
 :: you can aswell add an overclock to your gpu if MSI Afterburner is installed and all profiles are set (example here profile 1 has the oc and 2 the stocksettings to revert the oc)!
-:overclock
-cls
 echo.
 echo Overclocking the GPU...
 echo.
@@ -777,18 +770,14 @@ taskkill /F /IM "EncoderServer.exe"
 echo.
 echo Done!
 echo.
-goto islc
 
 :: you can use Intelligent Standby List Cleaner if installed to free up ram in the background and improve latency! Recommended Settings you can find on my Github Page.
-:islc
 echo Starting Intelligent standby list cleaner (ISLC)
 echo.
 start "" /D "C:\Program Files\Intelligent standby list cleaner" "Intelligent standby list cleaner ISLC.exe" -minimized
 echo Done!
 echo.
-goto taskkill
 
-:taskkill
 echo killing Tasks..
 echo.
 taskkill /F /IM "explorer.exe"
@@ -803,9 +792,7 @@ taskkill /F /IM "spoolsv.exe"
 echo.
 echo Done!
 echo.
-goto servicekill
 
-:servicekill
 echo Disable/Killing Services...
 echo.
 sc config "seclogon" start= disabled
@@ -875,9 +862,7 @@ sc stop "wisvc"
 echo.
 echo Done!
 echo.
-goto lower_priority
 
-:lower_priority
 echo Lowering Prioritys...
 echo.
 wmic process where name="chrome.exe" CALL setpriority "16384"
@@ -892,9 +877,7 @@ wmic process where name="EpicWebHelper.exe" CALL setpriority "64"
 echo.
 echo Done!
 echo.
-goto clear_prefetch_temp
 
-:clear_bin
 echo Emptying the Recycle Bin...
 echo.
 :: here you can add more drives if available just copy the command and replace C with your drive letter
@@ -902,9 +885,7 @@ rd /s /q C:\$Recycle.bin
 echo.
 echo Done!
 echo.
-goto clear_prefetch_temp
 
-:clear_prefetch_temp
 echo Emptying the Prefetch, Temp and SoftwareDistribution download Folders...
 echo.
 cd "C:\Windows\"
@@ -923,9 +904,7 @@ mkdir "Temp"
 echo.
 echo Done!
 echo.
-goto disable_hpet
 
-:disable_hpet
 :: if you're able to disable hpet in your bios you don't need this (makes devcon useless)!
 echo Disable HPET...
 echo.
@@ -934,15 +913,11 @@ cd "%~dp0\Tools"
 devcon /r disable *PNP0103
 echo.
 echo Done!
-goto flush_dns
 
-:flush_dns
 echo Flushing DNS...
 ipconfig/flushDNS
 echo Done!
-goto optimization_done
 
-:optimization_done
 cls
 echo.
 echo Optimization Successfull!
@@ -954,17 +929,13 @@ echo.
 echo Starting to revert everything.
 echo This may take some time...
 echo.
-goto balanced_power
 
-:balanced_power
 echo Switching to Balanced Powerplan...
 powercfg /s 381b4222-f694-41f0-9685-ff5bb260df2e
 echo.
 echo Powerplan successfully switched!
 echo.
-goto enable_tasks
 
-:reset_overclock
 echo Underclocking the GPU to default...
 start "" "C:\Program Files (x86)\MSI Afterburner\MSIAfterburner.exe" -Profile2 >nul
 timeout /t 5 /nobreak >nul
@@ -975,26 +946,20 @@ taskkill /F /IM "EncoderServer.exe"
 echo.
 echo Done!
 echo.
-goto islc_disable
 
-:islc_disable
 echo Closing Intelligent standby list cleaner (ISLC)
 echo.
 taskkill /F /IM "Intelligent standby list cleaner ISLC.exe"
 echo Done!
 echo.
-goto enable_tasks
 
-:enable_tasks
 echo Enabling Tasks...
 echo.
 start explorer.exe
 echo.
 echo Done!
 echo.
-goto enable_services
 
-:enable_services
 echo Enabling Services...
 echo.
 sc config "seclogon" start= demand
@@ -1047,9 +1012,7 @@ sc start "lmhosts"
 echo.
 echo Done!
 echo.
-goto reset_priority
 
-:reset_priority
 echo Revert Priority changes...
 echo.
 wmic process where name="chrome.exe" CALL setpriority "32"
@@ -1062,9 +1025,7 @@ wmic process where name="EpicWebHelper.exe" CALL setpriority "32"
 echo.
 echo Done!
 echo.
-goto enable_hpet
 
-:enable_hpet
 echo Enable HPET...
 echo.
 set HARDWARE_ID="ACPI\VEN_PNP&DEV_0103"
@@ -1072,14 +1033,11 @@ cd "%~dp0\Tools"
 devcon /r enable *PNP0103
 echo.
 echo Done!
-goto delete_reg
 
-:delete_reg
 :: removes the registry entry we made to run eac games with changed priority
 reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\FortniteClient-Win64-Shipping.exe" /F
 goto reset_done
 
-:reset_done
 cls
 echo.
 echo Settings reverted to default!
@@ -1149,14 +1107,6 @@ start "" /D "C:\Windows\System32" "notepad.exe"
 cls
 echo.
 echo Notepad started successfully!
-goto select_3
-
-:explorer
-echo Starting Explorer...
-start "" /D "C:\Windows" "explorer.exe"
-cls
-echo.
-echo Explorer started successfully!
 goto select_3
 
 :taskmanager
