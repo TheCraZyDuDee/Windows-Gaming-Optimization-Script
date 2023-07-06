@@ -103,7 +103,7 @@ cls
 echo What do you want to do?
 echo.
 echo 0 = Back
-echo 1 = Disable/Enable DWM (Experimental)
+echo 1 = Disable/Enable DWM (Experimental, Windows 10 only!)
 echo.
 goto extra_select
 
