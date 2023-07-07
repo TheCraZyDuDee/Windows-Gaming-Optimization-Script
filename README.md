@@ -1,8 +1,12 @@
-# Windows 10+ Gaming Optimization Script
+# Windows Gaming Optimization Script
 ## **This script should be safe to run since it can revert everything it changed, however still <ins>_use it at your own risk_<ins/>**
 
 Simple Batch that does optimizations like disabling Tasks, Services and much more while Gaming.<br/>
 All changes will only be temporary you also have the option to revert everything.
+
+Currently Supported Versions:
+- Windows 10
+- Windows 11*
 
 While this also works on Windows 11 it's mostly tweaked for 10 since that's the version i'm currently working on (some features might not b available for Windows 11). 
 
