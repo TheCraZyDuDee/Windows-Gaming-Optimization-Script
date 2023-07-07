@@ -82,7 +82,7 @@ if "%c%" GTR "5" goto game_select
 :game_select_2
 set /p c=Select your Option: 
 if "%c%"=="test" goto test_menu
-if "%c%"=="0" goto sosig
+if "%c%"=="0" cls & goto select_3
 if "%c%"=="1" goto example_game_2
 if "%c%"=="2" goto example_epic_2
 if "%c%"=="3" goto example_steam_2
@@ -151,7 +151,7 @@ goto tool_select
 :tool_select
 set /p c=Select your Option: 
 if "%c%"=="test" goto test_menu
-if "%c%"=="0" goto sosig
+if "%c%"=="0" cls & goto select_3
 if "%c%"=="1" goto resmon
 if "%c%"=="2" goto soundmixer
 if "%c%"=="3" goto taskmanager
@@ -171,7 +171,7 @@ goto app_select
 :app_select
 set /p c=Select your Option: 
 if "%c%"=="test" goto test_menu
-if "%c%"=="0" goto sosig
+if "%c%"=="0" cls & goto select_3
 if "%c%"=="1" goto example_program
 if "%c%" GTR "1" goto app_select
 
@@ -901,6 +901,7 @@ cd "%localappdata%"
 del "Temp" /S /Q
 rmdir /S /Q "Temp"
 mkdir "Temp"
+cd C:\Windows\System32
 echo.
 echo Done!
 echo.
@@ -1071,8 +1072,8 @@ set /p c=Select your Option:
 if "%c%"=="0" goto start
 if "%c%"=="1" goto choose_game
 if "%c%"=="2" goto choose_game_2
-if "%c%"=="3" goto sosig_2
-if "%c%"=="4" goto sosig
+if "%c%"=="3" cls & goto select_2
+if "%c%"=="4" cls & goto select_3
 if "%c%"=="5" goto tool_menu
 if "%c%"=="6" goto app_menu
 if "%c%"=="7" goto test_priority
@@ -1145,14 +1146,6 @@ goto select_3
 ::  //  other stuff  //
 :: ///////////////////
 
-:sosig
-cls
-goto select_3
-
-:sosig_2
-cls
-goto select_2
-
 :exit_warning
 cls
 color 40
@@ -1166,7 +1159,7 @@ goto exit_proceed
 :exit_proceed
 set /p c=Proceed? = 
 if "%c%"=="test" goto test_menu
-if "%c%"=="0" goto sosig
+if "%c%"=="0" cls & goto select_3
 if "%c%"=="1" goto exit
 if "%c%" GTR "1" goto exit_proceed
 
