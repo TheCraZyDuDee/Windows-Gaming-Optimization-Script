@@ -1,10 +1,10 @@
-# Windows 10/11 Gaming Optimization Batch Script
+# Windows 10+ Gaming Optimization Script
 ## **This script should be safe to run since it can revert everything it changed, however still <ins>_use it at your own risk_<ins/>**
 
 Simple Batch that does optimizations like disabling Tasks, Services and much more while Gaming.<br/>
 All changes will only be temporary you also have the option to revert everything.
 
-While this works on both Windows 10/11 it's mostly tweaked for 10 since that's the version i'm working on. 
+While this also works on Windows 11 it's mostly tweaked for 10 since that's the version i'm currently working on (some features might not b available for Windows 11). 
 
 There are currently 2 Versions available:<br/>
 Gaming Optimization.bat - Needs to be personalized by the User since it's meant to have way more features (Game Launcher for example).<br/>
@@ -27,7 +27,7 @@ Universal Version:<br/>
 - Clears the Recycle Bin, Temp, Prefetch and SoftwareDistribution Download Folders
 - Changes Powerplan
 - Flushes DNS (because it can)
-- Disable DWM (Reduces CPU Usage and Input Latency, currently Windows 10 only!)
+- Disable DWM (Reduces CPU Usage and Input Latency, Windows 10 only!)
 
 Normal Version:<br/>
 - Everything from above
