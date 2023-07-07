@@ -778,21 +778,6 @@ start "" /D "C:\Program Files\Intelligent standby list cleaner" "Intelligent sta
 echo Done!
 echo.
 
-echo killing Tasks..
-echo.
-taskkill /F /IM "explorer.exe"
-taskkill /F /IM "Microsoft.Photos.exe"
-taskkill /F /IM "WinStore.App.exe"
-taskkill /F /IM "TaskInputHost.exe"
-taskkill /F /IM "ShellExperienceHost.exe"
-taskkill /F /IM "GameBarPresenceWriter.exe"
-taskkill /F /IM "atieclxx.exe"
-taskkill /F /IM "RtkNGUI64.exe"
-taskkill /F /IM "spoolsv.exe"
-echo.
-echo Done!
-echo.
-
 echo Disable/Killing Services...
 echo.
 sc config "seclogon" start= disabled
@@ -815,7 +800,6 @@ sc config "MapsBroker" start= disabled
 sc config "CertPropSvc" start= disabled
 sc config "WbioSrvc" start= disabled
 sc config "wuauserv" start= disabled
-sc config "BthAvctpSvc" start= disabled
 sc config "BDESVC" start= disabled
 sc config "DPS" start= disabled
 sc config "fhsvc" start = disabled
@@ -827,6 +811,26 @@ sc config "lmhosts" start= disabled
 sc config "WerSvc" start= disabled
 sc config "FrameServer" start= disabled
 sc config "wisvc" start= disabled
+sc config "VaultSvc" start= disabled
+sc config "BTAGService" start= disabled
+sc config "DusmSvc" start= disabled
+sc config "DoSvc" start= disabled
+sc config "dmwappushservice" start= disabled
+sc config "lfsvc" start= disabled
+sc config "NcdAutoSetup" start= disabled
+sc config "QWAVE" start= disabled
+sc config "RmSvc" start= disabled
+sc config "RasMan" start= disabled
+sc config "RasAuto" start= disabled
+sc config "ScDeviceEnum" start= disabled
+sc config "SCardSvr" start= disabled
+sc config "TapiSrv" start= disabled
+sc config "DispBrokerDesktopSvc" start= disabled
+sc config "LanmanServer" start= disabled
+sc config "LanmanWorkstation" start= disabled
+sc config "SENS" start= disabled
+sc config "fdPHost" start= disabled
+sc config "FDResPub" start= disabled
 sc stop "seclogon"
 sc stop "CDPSvc"
 sc stop "CscService"
@@ -847,7 +851,6 @@ sc stop "MapsBroker"
 sc stop "CertPropSvc"
 sc stop "WbioSrvc"
 sc stop "wuauserv"
-sc stop "BthAvctpSvc"
 sc stop "BDESVC"
 sc stop "DPS"
 sc stop "fhsvc"
@@ -859,6 +862,41 @@ sc stop "lmhosts"
 sc stop "WerSvc"
 sc stop "FrameServer"
 sc stop "wisvc"
+sc stop "VaultSvc"
+sc stop "BTAGService"
+sc stop "DusmSvc"
+sc stop "DoSvc"
+sc stop "dmwappushservice"
+sc stop "lfsvc"
+sc stop "NcdAutoSetup"
+sc stop "QWAVE"
+sc stop "RmSvc"
+sc stop "RasMan"
+sc stop "RasAuto"
+sc stop "ScDeviceEnum"
+sc stop "SCardSvr"
+sc stop "TapiSrv"
+sc stop "DispBrokerDesktopSvc"
+sc stop "LanmanServer"
+sc stop "LanmanWorkstation"
+sc stop "SENS"
+sc stop "fdpHost"
+sc stop "FDResPub"
+echo.
+echo Done!
+echo.
+
+echo killing Tasks..
+echo.
+taskkill /F /IM "explorer.exe"
+taskkill /F /IM "Microsoft.Photos.exe"
+taskkill /F /IM "WinStore.App.exe"
+taskkill /F /IM "TaskInputHost.exe"
+taskkill /F /IM "ShellExperienceHost.exe"
+taskkill /F /IM "GameBarPresenceWriter.exe"
+taskkill /F /IM "atieclxx.exe"
+taskkill /F /IM "RtkNGUI64.exe"
+taskkill /F /IM "spoolsv.exe"
 echo.
 echo Done!
 echo.
@@ -983,7 +1021,6 @@ sc config "MapsBroker" start= delayed-auto
 sc config "CertPropSvc" start= demand
 sc config "WbioSrvc" start= demand
 sc config "wuauserv" start= demand
-sc config "BthAvctpSvc" start= demand
 sc config "BDESVC" start= demand
 sc config "DPS" start= auto
 sc config "fhsvc" start = demand
@@ -995,6 +1032,27 @@ sc config "lmhosts" start= demand
 sc config "WerSvc" start= demand
 sc config "FrameServer" start= demand
 sc config "wisvc" start= demand
+sc config "VaultSvc" start= demand
+sc config "BTAGService" start= demand
+sc config "DusmSvc" start= auto
+sc config "DoSvc" start= auto
+sc config "dmwappushservice" start= demand
+sc config "lfsvc" start= demand
+sc config "NcdAutoSetup" start= demand
+sc config "QWAVE" start= demand
+sc config "RmSvc" start= demand
+sc config "RasMan" start= auto
+sc config "RasAuto" start= demand
+sc config "RemoteAccess" start= disabled
+sc config "ScDeviceEnum" start= demand
+sc config "SCardSvr" start= demand
+sc config "TapiSrv" start= demand
+sc config "DispBrokerDesktopSvc" start= auto
+sc config "LanmanServer" start= auto
+sc config "LanmanWorkstation" start= auto
+sc config "SENS" start= auto
+sc config "fdPHost" start= demand
+sc config "FDResPub" start= demand
 sc start "CDPSvc"
 sc start "InstallService"
 sc start "SEMgrSvc"
@@ -1006,10 +1064,21 @@ sc start "stisvc"
 sc start "TabletInputService"
 sc start "DiagTrack"
 sc start "WbioSrvc"
-sc start "BthAvctpSvc"
 sc start "DPS"
 sc start "PcaSvc"
 sc start "lmhosts"
+sc start "VaultSvc"
+sc start "DusmSvc"
+sc start "QWAVE"
+sc start "RmSvc"
+sc start "RasMan"
+sc start "TapiSrv"
+sc start "DispBrokerDesktopSvc"
+sc start "LanmanServer"
+sc start "LanmanWorkstation"
+sc start "SENS"
+sc start "fdpHost"
+sc start "FDResPub"
 echo.
 echo Done!
 echo.
