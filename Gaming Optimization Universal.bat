@@ -91,7 +91,7 @@ goto tool_select
 :tool_select
 set /p c=Select your Option: 
 if "%c%"=="test" goto test_menu
-if "%c%"=="0" goto sosig
+if "%c%"=="0" cls & goto select_3
 if "%c%"=="1" goto resmon
 if "%c%"=="2" goto soundmixer
 if "%c%"=="3" goto taskmanager
@@ -103,14 +103,14 @@ cls
 echo What do you want to do?
 echo.
 echo 0 = Back
-echo 1 = Disable/Enable DWM (Experimental, Windows 10 only!)
+echo 1 = Disable/Enable DWM (Experimental)
 echo.
 goto extra_select
 
 :extra_select
 set /p c=Select your Option: 
 if "%c%"=="test" goto test_menu
-if "%c%"=="0" goto sosig
+if "%c%"=="0" cls & goto select_3
 if "%c%"=="1" goto dwm_check
 if "%c%" GTR "1" goto extra_select
 
@@ -248,6 +248,7 @@ cd "%localappdata%"
 del "Temp" /S /Q
 rmdir /S /Q "Temp"
 mkdir "Temp"
+cd C:\Windows\System32
 echo.
 echo Done!
 echo.
@@ -374,8 +375,8 @@ goto test_select
 set /p c=Select your Option: 
 if "%c%"=="6969" goto why...
 if "%c%"=="0" goto start
-if "%c%"=="1" goto sosig_2
-if "%c%"=="2" goto sosig
+if "%c%"=="1" cls & goto select_2
+if "%c%"=="2" cls & goto select_3
 if "%c%"=="3" goto tool_menu
 if "%c%"=="4" goto extra_menu
 if "%c%"=="5" goto exit_warning
@@ -384,14 +385,6 @@ if "%c%" GTR "5" goto tool_select
 ::   ///////////////////
 ::  //  Other Stuff  //
 :: ///////////////////
-
-:sosig
-cls
-goto select_3
-
-:sosig_2
-cls
-goto select_2
 
 :taskmanager
 echo Starting Taskmanager...
@@ -426,6 +419,8 @@ echo Soundmixer started successfully!
 goto select_3
 
 :dwm_check
+systeminfo|find "Microsoft Windows 11" >nul
+if %errorlevel% == 0 cls & echo. & echo Windows 11 is not Supported! & goto select_3
 if exist "%~dp0\Tools\PSSuspend\pssuspend.exe" goto dwm_disable
 cls
 echo.
@@ -438,7 +433,7 @@ goto dwm_check_choice
 :dwm_check_choice
 set /p c=Select your Option: 
 if "%c%"=="test" goto test_menu
-if "%c%"=="0" goto sosig
+if "%c%"=="0" cls & goto select_3
 if "%c%"=="1" goto dwm_download
 if "%c%" GTR "1" goto select_22
 
@@ -477,8 +472,6 @@ goto select_3
 cls
 echo.
 echo Enable DWM...
-tasklist|find "dwm.exe" >nul
-if %errorlevel% == 0 goto sosig
 "%~dp0\Tools\PSSuspend\pssuspend.exe" -r winlogon.exe -nobanner
 cls
 echo.
@@ -499,7 +492,7 @@ goto exit_proceed
 :exit_proceed
 set /p c=Proceed? = 
 if "%c%"=="test" goto test_menu
-if "%c%"=="0" goto sosig
+if "%c%"=="0" cls & goto select_3
 if "%c%"=="1" goto exit
 if "%c%" GTR "1" goto exit_proceed
 
