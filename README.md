@@ -14,7 +14,7 @@ There are currently 2 Versions available:<br/>
 Gaming Optimization.bat (Recommended for most People) - Version that doesn't need any changes from the User just download & run.<br/>
 Gaming Optimization Extended.bat - Needs to be personalized by the User since it's meant to have way more features (Game Launcher for example).
 
-Main Focus will probably go to the Universal Version since the normal one is basically just a template which needs lots of editing by the User.
+Main Focus will probably go to the Normal Version since the Extended one is basically just a template which needs lots of editing by the User.
 
 Things that you can expect from the Optimization:<br/>
 - Reduced Ram usage
