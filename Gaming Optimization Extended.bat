@@ -1,5 +1,5 @@
 @echo off
-title Gaming Optimization
+title Gaming Optimization Extended
 
 echo Requesting Admin Permissions...
 net session >nul 2>&1 && goto :start
