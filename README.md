@@ -8,7 +8,7 @@ Currently Supported Versions:
 - Windows 10
 - Windows 11*
 
-While this also works on Windows 11 it's mostly tweaked for 10 since that's the version i'm currently working on (some features might not b available for Windows 11). 
+While this also works on Windows 11 it's mostly tweaked for 10 since that's the version i'm currently working on (some features might not be available for Windows 11). 
 
 There are currently 2 Versions available:<br/>
 Gaming Optimization.bat (Recommended for most People) - Version that doesn't need any changes from the User just download & run.<br/>
