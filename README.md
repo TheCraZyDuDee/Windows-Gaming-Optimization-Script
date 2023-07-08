@@ -11,8 +11,8 @@ Currently Supported Versions:
 While this also works on Windows 11 it's mostly tweaked for 10 since that's the version i'm currently working on (some features might not b available for Windows 11). 
 
 There are currently 2 Versions available:<br/>
-Gaming Optimization.bat - Needs to be personalized by the User since it's meant to have way more features (Game Launcher for example).<br/>
-Gaming Optimization Universal.bat (Recommended for most People) - Version that doesn't need any changes from the User just download & run.
+Gaming Optimization.bat (Recommended for most People) - Version that doesn't need any changes from the User just download & run.<br/>
+Gaming Optimization Extended.bat - Needs to be personalized by the User since it's meant to have way more features (Game Launcher for example).
 
 Main Focus will probably go to the Universal Version since the normal one is basically just a template which needs lots of editing by the User.
 
