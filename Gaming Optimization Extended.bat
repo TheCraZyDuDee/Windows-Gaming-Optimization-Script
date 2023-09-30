@@ -2,9 +2,18 @@
 title Gaming Optimization Extended
 
 echo Requesting Admin Permissions...
-net session >nul 2>&1 && goto :start
+net session >nul 2>&1 && goto :winver
 MSHTA "javascript: var shell = new ActiveXObject('shell.application'); shell.ShellExecute('%~nx0', '', '', 'runas', 1);close();"
 exit /b
+
+:winver
+cls
+for /f "tokens=4-6 delims=. " %%i in ('ver') do set VERSION1=%%i.%%j.%%k
+if "%version1%" == "10.0.22000" goto start
+if "%version1%" == "10.0.22621" goto start
+for /f "tokens=4-5 delims=. " %%i in ('ver') do set VERSION2=%%i.%%j
+if "%version2%" == "10.0" goto start
+goto not_supported
 
 :start
 cls
@@ -16,7 +25,9 @@ echo   //      Optimization       //
 echo  /////////////////////////////
 echo.
 echo A Script to temporary optimize Windows to increase Performance.
-echo Works on Windows 10/11.
+if "%version1%" == "10.0.22000" echo Current Windows Version: 11 (Partly Supported)
+if "%version1%" == "10.0.22621" echo Current Windows Version: 11 (Partly Supported)
+if "%version2%" == "10.0" echo Current Windows Version: 10 (Supported)
 echo.
 echo Welcome %username%!
 echo.
@@ -1214,6 +1225,14 @@ goto select_3
 ::   ///////////////////
 ::  //  other stuff  //
 :: ///////////////////
+
+:not_supported
+cls
+echo.
+echo Your current Windows Version isn't supported!
+echo Please press any Key to continue...
+pause >nul
+goto exit
 
 :exit_warning
 cls
