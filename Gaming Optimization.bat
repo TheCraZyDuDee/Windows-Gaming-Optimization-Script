@@ -516,7 +516,7 @@ set /p c=Select your Option:
 if "%c%"=="test" goto test_menu
 if "%c%"=="0" cls & goto select_3
 if "%c%"=="1" goto dwm_download
-if "%c%" GTR "1" goto select_22
+if "%c%" GTR "1" goto dwm_check_choice
 
 :dwm_download
 cls
