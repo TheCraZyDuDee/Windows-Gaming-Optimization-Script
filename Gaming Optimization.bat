@@ -1,35 +1,30 @@
 @echo off
 title Gaming Optimization
 
-echo Requesting Admin Permissions...
-net session >nul 2>&1 && goto :winver
-MSHTA "javascript: var shell = new ActiveXObject('shell.application'); shell.ShellExecute('%~nx0', '', '', 'runas', 1);close();"
-exit /b
+:: request admin permission
+echo Checking for Admin Permissions...
+if not "%1"=="am_admin" (powershell start -verb runas '%0' am_admin & exit /b)
+cd "%~dp0"
 
+:: checking if the build number is higher than 19045 to see if it's 11 and less than 10240 for any os before 10
 :winver
-cls
-for /f "tokens=4-6 delims=. " %%i in ('ver') do set VERSION1=%%i.%%j.%%k
-if "%version1%" == "10.0.22000" goto start
-if "%version1%" == "10.0.22621" goto start
-for /f "tokens=4-5 delims=. " %%i in ('ver') do set VERSION2=%%i.%%j
-if "%version2%" == "10.0" goto start
+for /f "tokens=4-6 delims=. " %%i in ('ver') do set VERSION=%%i%%j%%k
+if "%version%" GTR "10019045" (set osver=Windows 11 - Partly Supported) else (set osver=Windows 10 - Supported)
+if not "%version%" LSS "10010240" goto start
 goto not_supported
 
 :start
-cls
 color 1f
+cls & echo.
+echo     /////////////////////////
+echo    // Gaming Optimization //
+echo   //   by CraZyDuDe      //
+echo  /////////////////////////
 echo.
-echo     /////////////////////////////
-echo    //  crustySenpai's Gaming  //
-echo   //      Optimization       //
-echo  /////////////////////////////
+echo A Script to temporary optimize Windows for a better Gaming Experience.
 echo.
-echo A Script to temporary optimize Windows to increase Performance.
-if "%version1%" == "10.0.22000" echo Current Windows Version: 11 (Partly Supported)
-if "%version1%" == "10.0.22621" echo Current Windows Version: 11 (Partly Supported)
-if "%version2%" == "10.0" echo Current Windows Version: 10 (Supported)
-echo.
-echo Welcome %username%!
+echo Current OS: %osver%
+echo Welcome %username%.
 echo.
 echo Choose an Option:
 echo.
@@ -37,37 +32,30 @@ echo 1 = Optimize for Gaming
 echo 2 = Revert to default
 echo 3 = Exit
 echo.
-goto select
-
-:select
 set /p c=Select your Option: 
 if "%c%"=="test" goto test_menu
 if "%c%"=="1" goto optimize
 if "%c%"=="2" goto reset
-if "%c%"=="3" goto exit
-if "%c%" GTR "3" goto select
-if "%c%" LSS "1" goto select
+if "%c%"=="3" exit
+if "%c%" GTR "3" goto start
+if "%c%" LSS "1" goto start
 
 :select_2
-echo.
+cls & echo.
 echo Choose an Option:
 echo.
 echo 1 = Optimize for Gaming
 echo 2 = Exit
 echo.
-goto select_22
-
-:select_22
 set /p c=Select your Option: 
 if "%c%"=="test" goto test_menu
 if "%c%"=="1" goto optimize
-if "%c%"=="2" goto exit
-if "%c%" GTR "2" goto select_22
-if "%c%" LSS "1" goto select_22
+if "%c%"=="2" exit
+if "%c%" GTR "2" goto select_2
+if "%c%" LSS "1" goto select_2
 
 :select_3
-echo.
-color 1f
+cls & echo.
 echo Choose an Option:
 echo.
 echo 1 = Revert to default
@@ -75,20 +63,17 @@ echo 2 = Tool Menu
 echo 3 = Extras
 echo 4 = Exit
 echo.
-goto select_33
-
-:select_33
 set /p c=Select your Option: 
 if "%c%"=="test" goto test_menu
 if "%c%"=="1" goto reset
 if "%c%"=="2" goto tool_menu
 if "%c%"=="3" goto extra_menu
 if "%c%"=="4" goto exit_warning
-if "%c%" GTR "4" goto select_33
-if "%c%" LSS "1" goto select_33
+if "%c%" GTR "4" goto select_3
+if "%c%" LSS "1" goto select_3
 
 :tool_menu
-cls
+cls & echo.
 echo Select the Program you want to start:
 echo.
 echo 0 = Back
@@ -97,50 +82,50 @@ echo 2 = Soundmixer
 echo 3 = Task Manager
 echo 4 = Command Prompt
 echo.
-goto tool_select
-
-:tool_select
 set /p c=Select your Option: 
 if "%c%"=="test" goto test_menu
 if "%c%"=="0" cls & goto select_3
-if "%c%"=="1" goto resmon
-if "%c%"=="2" goto soundmixer
-if "%c%"=="3" goto taskmanager
-if "%c%"=="4" goto cmd
-if "%c%" GTR "4" goto tool_select
+if "%c%" GTR "4" goto tool_menu
+goto tools
 
 :extra_menu
-cls
+cls & echo.
 echo What do you want to do?
 echo.
 echo 0 = Back
-echo 1 = Disable/Enable DWM (Experimental)
+echo 1 = Enable/Disable DWM (Experimental)
 echo.
-goto extra_select
-
-:extra_select
 set /p c=Select your Option: 
 if "%c%"=="test" goto test_menu
 if "%c%"=="0" cls & goto select_3
 if "%c%"=="1" goto dwm_check
-if "%c%" GTR "1" goto extra_select
+if "%c%" GTR "1" goto extra_menu
 
+:test_menu
+cls & echo.
+echo Menu for Testing
+echo.
+echo Please select an option:
+echo.
+echo 0 = Go Back to start
+echo 1 = select_2
+echo 2 = select_3
+echo 3 = tool_menu
+echo 4 = extra_menu
+echo 5 = exit_warning
+echo.
+set /p c=Select your Option: 
+if "%c%"=="0" goto start
+if "%c%"=="1" cls & goto select_2
+if "%c%"=="2" cls & goto select_3
+if "%c%"=="3" goto tool_menu
+if "%c%"=="4" goto extra_menu
+if "%c%"=="5" goto exit_warning
+if "%c%" GTR "5" goto test_menu
 
-::   /////////////////////////
-::  //  Optimize & Revert  //
-:: /////////////////////////
-
+:: changing the service starttype to disabled and also stopping them, needs some optimizing/trimming in the future
 :optimize
 cls
-echo.
-echo Starting the Optimization.
-echo.
-echo This may take some time...
-echo.
-
-echo Killing Services...
-echo.
-@echo off
 sc config "seclogon" start= disabled
 sc config "CDPSvc" start= disabled
 sc config "CscService" start= disabled
@@ -243,12 +228,8 @@ sc stop "LanmanWorkstation"
 sc stop "SENS"
 sc stop "fdpHost"
 sc stop "FDResPub"
-echo.
-echo Done!
-echo.
 
-echo killing Tasks..
-echo.
+:: closing unessesary tasks
 taskkill /F /IM "explorer.exe"
 taskkill /F /IM "Microsoft.Photos.exe"
 taskkill /F /IM "WinStore.App.exe"
@@ -258,12 +239,8 @@ taskkill /F /IM "GameBarPresenceWriter.exe"
 taskkill /F /IM "atieclxx.exe"
 taskkill /F /IM "RtkNGUI64.exe"
 taskkill /F /IM "spoolsv.exe"
-echo.
-echo Done!
-echo.
 
-echo Lowering Prioritys...
-echo.
+:: lowering common process priorities
 wmic process where name="chrome.exe" CALL setpriority "16384"
 wmic process where name="firefox.exe" CALL setpriority "16384"
 wmic process where name="steam.exe" CALL setpriority "64"
@@ -271,68 +248,31 @@ wmic process where name="steamservice.exe" CALL setpriority "64"
 wmic process where name="steamwebhelper.exe" CALL setpriority "64"
 wmic process where name="GameOverlayUI.exe" CALL setpriority "64"
 
-echo.
-echo Done!
-echo.
-
-echo Emptying the Recycle Bin...
-echo.
+:: deleting unessesary stuff such as the recycle bin, temp folders, prefetch folder and leftover windows update files
 rd /s /q C:\$Recycle.bin
-echo.
-echo Done!
-echo.
+rd /s /q "C:\Windows\Prefetch"
+rd /s /q "C:\Windows\Temp"
+rd /s /q "C:\Windows\SoftwareDistribution\Download"
+rd /s /q "%localappdata%\Temp"
+md "C:\Windows\Prefetch"
+md "C:\Windows\Temp"
+md "C:\Windows\SoftwareDistribution\Download"
+md "%localappdata%\Temp"
 
-echo Emptying the Prefetch, Temp and SoftwareDistribution download Folders...
-echo.
-cd "C:\Windows\"
-del "Prefetch" /S /Q /F
-del "Temp" /S /Q
-rmdir /S /Q "Prefetch"
-mkdir "Prefetch"
-cd "C:\Windows\SoftwareDistribution"
-del "Download" /S /Q
-rmdir /S /Q "Download"
-mkdir "Download"
-cd "%localappdata%"
-del "Temp" /S /Q
-rmdir /S /Q "Temp"
-mkdir "Temp"
-cd C:\Windows\System32
-echo.
-echo Done!
-echo.
-
-echo Flushing DNS...
+:: flusing dns
 ipconfig/flushDNS
-echo Done!
-
-cls
-echo.
-echo Optimization successfull!
 goto select_3
 
 :reset
 cls
-echo.
-echo Starting to revert everything.
-echo This may take some time...
-echo.
-
+:: checking if dwm isn't running to resume winlogon it
 tasklist|find "dwm.exe" >nul
-if %errorlevel% == 0 goto go
-"%~dp0\Tools\PSSuspend\pssuspend.exe" -r winlogon.exe -nobanner
-goto go
+if "%errorlevel%"== "1" "Tools\PSSuspend\pssuspend.exe" -nobanner -r winlogon.exe
 
-:go
-echo Enabling Tasks...
-echo.
+:: starting previously closed tasks
 start explorer.exe
-echo.
-echo Done!
-echo.
 
-echo Enabling Services...
-echo.
+:: setting starttypes of services to their defaults and start them, needs some optimizing/trimming in the future
 sc config "seclogon" start= demand
 sc config "CDPSvc" start= delayed-auto
 sc config "CscService" start= demand
@@ -412,132 +352,44 @@ sc start "SENS"
 sc start "fdpHost"
 sc start "FDResPub"
 
-echo.
-echo Done!
-echo.
-
-echo Revert Priority changes...
-echo.
+:: changing priorities of common processes to normal
 wmic process where name="chrome.exe" CALL setpriority "32"
 wmic process where name="firefox.exe" CALL setpriority "32"
 wmic process where name="steam.exe" CALL setpriority "32"
 wmic process where name="steamservice.exe" CALL setpriority "32"
 wmic process where name="steamwebhelper.exe" CALL setpriority "32"
-echo.
-echo Done!
-echo.
-
-cls
-echo.
-echo Settings reverted to default!
 goto select_2
 
 ::   /////////////////
 ::  //  Test Menu  //
 :: /////////////////
 
-:test_menu
+
+:: choices from tool_menu
+:tools
 cls
-echo.
-echo Menu for Testing
-echo.
-echo Please select an option:
-echo.
-echo 0 = Go Back to start
-echo 1 = select_2
-echo 2 = select_3
-echo 3 = tool_menu
-echo 4 = extra_menu
-echo 5 = exit_warning
-echo.
-goto test_select
-
-:test_select
-set /p c=Select your Option: 
-if "%c%"=="6969" goto why...
-if "%c%"=="0" goto start
-if "%c%"=="1" cls & goto select_2
-if "%c%"=="2" cls & goto select_3
-if "%c%"=="3" goto tool_menu
-if "%c%"=="4" goto extra_menu
-if "%c%"=="5" goto exit_warning
-if "%c%" GTR "5" goto tool_select
-
-::   ///////////////////
-::  //  Other Stuff  //
-:: ///////////////////
-
-:taskmanager
-echo Starting Taskmanager...
-start taskmgr
-cls
-echo.
-echo Taskmanager started successfully!
+if "%c%"=="1" start resmon
+if "%c%"=="2" start sndvol
+if "%c%"=="3" start taskmgr
+if "%c%"=="4" start cmd
 goto select_3
 
-:resmon
-echo Starting Resource Monitor...
-start resmon
-cls
-echo.
-echo Resource Monitor started successfully!
-goto select_3
-´
-:cmd
-echo Starting Command Prompt...
-start cmd
-cls
-echo.
-echo Command Prompt started successfully!
-goto select_3
-
-:soundmixer
-echo Starting Soundmixer...
-start sndvol
-cls
-echo.
-echo Soundmixer started successfully!
-goto select_3
-
+:: check for pssuspend and if not found download it via BitsTransfer
 :dwm_check
-if "%version1%" == "10.0.22000" cls & echo. & echo Windows 11 is not Supported! & goto select_3
-if "%version1%" == "10.0.22621" cls & echo. & echo Windows 11 is not Supported! & goto select_3
-if exist "%~dp0\Tools\PSSuspend\pssuspend.exe" goto dwm_disable
-cls
-echo.
-echo Disabling DWM requires the Tool PSSuspend, do you want do download it now?
-echo.
-echo 0 = No / 1 = Yes
-echo.
-goto dwm_check_choice
-
-:dwm_check_choice
-set /p c=Select your Option: 
-if "%c%"=="test" goto test_menu
-if "%c%"=="0" cls & goto select_3
-if "%c%"=="1" goto dwm_download
-if "%c%" GTR "1" goto dwm_check_choice
-
-:dwm_download
-cls
-echo.
-echo Downloading PSSuspend...
-cd %~dp0
-mkdir Tools\PSSuspend
+tasklist | find "dwm.exe"
+if "%version%" GTR "10019045" cls & echo. & echo Windows 11 is not Supported! & goto select_3
+if not exist "Tools\PSSuspend\pssuspend.exe" goto download
+if "%errorlevel%"=="0" (goto dwm_disable) else (goto dwm_enable)
+:download
+cls & echo PSSuspend not found, downloading...
+if not exist Tools\PSSuspend md Tools\PSSuspend
 powershell -Command "Start-BitsTransfer "https://live.sysinternals.com/pssuspend.exe" "Tools\PSSuspend""
-cd C:\Windows\System32
-cls
-echo.
-echo PSSuspend downloaded successfully!
-goto select_3
+if "%errorlevel%"=="0" (goto dwm_disable) else (goto dwm_enable)
 
 :dwm_disable
-tasklist|find "dwm.exe" >nul
-if %errorlevel% == 1 goto dwm_enable
-cls
-echo.
+cls & echo.
 echo Disable DWM...
-"%~dp0\Tools\PSSuspend\pssuspend.exe" winlogon.exe -nobanner
+"Tools\PSSuspend\pssuspend.exe" -nobanner winlogon.exe
 taskkill /F /IM "explorer.exe"
 taskkill /F /IM "SearchApp.exe"
 taskkill /F /IM "TextInputHost.exe"
@@ -550,10 +402,9 @@ echo DWM disabled successfully!
 goto select_3
 
 :dwm_enable
-cls
-echo.
+cls & echo.
 echo Enable DWM...
-"%~dp0\Tools\PSSuspend\pssuspend.exe" -r winlogon.exe -nobanner
+"Tools\PSSuspend\pssuspend.exe" -nobanner -r winlogon.exe
 cls
 echo.
 echo DWM enabled successfully!
@@ -575,14 +426,8 @@ echo WARNING! When exiting now you can only start the script again by starting e
 echo.
 echo 0 = No / 1 = Yes
 echo.
-goto exit_proceed
-
-:exit_proceed
 set /p c=Proceed? = 
 if "%c%"=="test" goto test_menu
-if "%c%"=="0" cls & goto select_3
-if "%c%"=="1" goto exit
-if "%c%" GTR "1" goto exit_proceed
-
-:exit
+if "%c%"=="0" color 1f & cls & goto select_3
+if "%c%" GTR "1" goto exit_warning
 exit
