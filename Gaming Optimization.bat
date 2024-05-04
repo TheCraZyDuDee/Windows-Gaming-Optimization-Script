@@ -8,10 +8,9 @@ cd "%~dp0"
 
 :: checking if the build number is higher than 19045 to see if it's 11 and less than 10240 for any os before 10
 :winver
-for /f "tokens=4-6 delims=. " %%i in ('ver') do set VERSION=%%i%%j%%k
-if "%version%" GTR "10019045" (set osver=Windows 11 - Partly Supported) else (set osver=Windows 10 - Supported)
-if not "%version%" LSS "10010240" goto start
-goto not_supported
+for /f "tokens=4-6 delims=.] " %%i in ('ver') do set VERSION=%%i%%j%%k
+if %version% GTR 10019045 (set osver=Windows 11 - Partly Supported) else (set osver=Windows 10 - Supported)
+if %version% LSS 10010240 goto not_supported
 
 :start
 color 1f
@@ -377,7 +376,7 @@ goto select_3
 :: check for pssuspend and if not found download it via BitsTransfer
 :dwm_check
 tasklist | find "dwm.exe"
-if "%version%" GTR "10019045" cls & echo. & echo Windows 11 is not Supported! & goto select_3
+if %version% GTR 10019045 cls & echo. & echo Windows 11 is not Supported! & goto select_3
 if not exist "Tools\PSSuspend\pssuspend.exe" goto download
 if "%errorlevel%"=="0" (goto dwm_disable) else (goto dwm_enable)
 :download
