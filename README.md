@@ -4,7 +4,7 @@
 Simple Batch that does optimizations like disabling Tasks, Services and much more while Gaming.<br/>
 All changes will only be temporary you also have the option to revert everything.
 
-Currently Supported Versions:
+Works on:
 - Windows 10
 - Windows 11*
 - Windows Server*
