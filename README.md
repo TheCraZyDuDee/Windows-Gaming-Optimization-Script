@@ -7,8 +7,10 @@ All changes will only be temporary you also have the option to revert everything
 Currently Supported Versions:
 - Windows 10
 - Windows 11*
+- Windows Server*
 
-While this also works on Windows 11 it's mostly tweaked for 10 since that's the version i initially made it for (some features might not be available for Windows 11). 
+While this also works on Windows 11 it's mostly tweaked for 10 since that's the version i initially made it for (some features might not be available for Windows 11).<br>
+All Windows Server Versions that are based on 10 (2016, 2019 & 2022) should work but aren't tested.
 
 There are currently 2 Versions available:<br/>
 Gaming Optimization.bat (Recommended for most People) - Main Project that doesn't need any changes from the User just download & run.<br/>
