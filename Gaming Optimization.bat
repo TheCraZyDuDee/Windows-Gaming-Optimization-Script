@@ -133,10 +133,11 @@ setlocal EnableDelayedExpansion
 set "services=seclogon CDPSvc CscService PhoneSvc Fax InstallService icssvc SEMgrSvc SmsRouter Spooler SysMain WpnService WSearch stisvc TabletInputService DiagTrack MapsBroker CertPropSvc WbioSrvc wuauserv BDESVC DPS fhsvc SharedAccess Netlogon PcaSvc WpcMonSvc lmhosts WerSvc FrameServer wisvc VaultSvc BTAGService DusmSvc DoSvc dmwappushservice lfsvc NcdAutoSetup QWAVE RmSvc RasMan RasAuto ScDeviceEnum SCardSvr TapiSrv DispBrokerDesktopSvc LanmanServer LanmanWorkstation SENS fdPHost FDResPub"
 
 :: Backup current start types and running statuses to a file
-set backupFile="service_backup.txt"
+if not exist "%appdata%\Gaming Optimization" (md "%appdata%\Gaming Optimization")
+set backupFile="%appdata%\Gaming Optimization\service_backup.txt"
 echo. > %backupFile%
 for %%S in (%services%) do (
-    rem Fetch start type
+    :: Fetch start type
     for /f "tokens=3" %%T in ('sc qc "%%S" ^| findstr "START_TYPE"') do (
         set "startType=%%T"
     )
@@ -203,7 +204,7 @@ start explorer.exe
 
 :: backup file with original start types and running statuses
 setlocal EnableDelayedExpansion
-set backupFile="service_backup.txt"
+set backupFile="%appdata%\Gaming Optimization\service_backup.txt"
 
 :: read and restore start types and running statuses
 for /f "usebackq tokens=1,2,3" %%S in (%backupFile%) do (
