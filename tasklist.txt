@@ -1,0 +1,23 @@
+left4dead2.exe
+left4dead.exe
+FortniteClient-Win64-Shipping.exe
+AT-Win64-Shipping.exe
+ShippingPC-RealmGame.exe
+Risk of Rain 2.exe
+Cemu.exe
+sudachi.exe
+Ryujinx.exe
+xemu.exe
+xenia_canary.exe
+citra-qt.exe
+Dolphin.exe
+boiii.exe
+BlackOps3.exe
+hl2.exe
+DOOMEternalx64vk.exe
+mcclauncher.exe
+PAYDAY3Client-Win64-Shipping.exe
+portal2.exe
+RDR2.exe
+GTA5.exe
+Borderlands2.exe
