@@ -9,7 +9,7 @@ Works on:
 - Windows 11*
 - Windows Server*
 
-While this also works on Windows 11 it's mostly tweaked for 10 since that's the version i initially made it for (some features might not be available for Windows 11).<br>
+While this should fully work on Windows 11 some features might be only available for Windows 10.<br>
 All Windows Server Versions that are based on 10 (2016, 2019 & 2022) should work but aren't tested.
 
 There are currently 2 Versions available:<br/>
@@ -24,7 +24,6 @@ Things that you in theory can expect from the Optimization:<br/>
 
 Here is a list of things that the optimization does:
 
-Universal Version:<br/>
 - Killing unessesary tasks
 - Disabling useless Services
 - Lower the Priority of some Processes
