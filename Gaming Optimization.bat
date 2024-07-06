@@ -1,13 +1,13 @@
 @echo off
 title Gaming Optimization
 
-:: request admin permission
 echo Checking for Admin Permissions...
+:: request admin permission
 if not "%1"=="am_admin" (powershell start -verb runas '%0' am_admin & exit /b)
 cd "%~dp0"
 
-:: checking if the build number is higher than 19045 to see if it's 11 and less than 10240 for any os before 10
 :winver
+:: checking if the build number is higher than 20348 to see if it's 11 and less than 10240 for anything before 10
 for /f "tokens=4-6 delims=.] " %%i in ('ver') do set VERSION=%%i%%j%%k
 if %version% GTR 10020348 (set osver=Windows 11 - Partly Supported) else (set osver=Windows 10 - Supported)
 if %version% LSS 10010240 goto not_supported
@@ -15,9 +15,8 @@ if %version% LSS 10010240 goto not_supported
 :start
 color 1f
 cls & echo.
-echo     /////////////////////////
-echo    // Gaming Optimization //
-echo   //   by CraZyDuDe      //
+echo    /////////////////////////
+echo   // Gaming Optimization //
 echo  /////////////////////////
 echo.
 echo A Script to temporary optimize Windows for a better Gaming Experience.
@@ -40,6 +39,7 @@ if "%c%" GTR "3" goto start
 if "%c%" LSS "1" goto start
 
 :select_2
+:: back menu which shows up after reverting everything to normal
 cls & echo.
 echo Choose an Option:
 echo.
@@ -54,6 +54,7 @@ if "%c%" GTR "2" goto select_2
 if "%c%" LSS "1" goto select_2
 
 :select_3
+:: back menu which shows up after the optimizing process
 cls & echo.
 echo Choose an Option:
 echo.
@@ -72,6 +73,7 @@ if "%c%" GTR "4" goto select_3
 if "%c%" LSS "1" goto select_3
 
 :tool_menu
+:: menu to quickly choose between various useful tools
 cls & echo.
 echo Select the Program you want to start:
 echo.
@@ -88,6 +90,7 @@ if "%c%" GTR "4" goto tool_menu
 goto tools
 
 :extra_menu
+:: menu where i put selections not made in the optimizing process
 cls & echo.
 echo What do you want to do?
 echo.
@@ -101,6 +104,7 @@ if "%c%"=="1" goto dwm_check
 if "%c%" GTR "1" goto extra_menu
 
 :test_menu
+:: menu to quickly jump to other parts of the script
 cls & echo.
 echo Menu for Testing
 echo.
@@ -122,111 +126,37 @@ if "%c%"=="4" goto extra_menu
 if "%c%"=="5" goto exit_warning
 if "%c%" GTR "5" goto test_menu
 
-:: changing the service starttype to disabled and also stopping them, needs some optimizing/trimming in the future
 :optimize
 cls
-sc config "seclogon" start= disabled
-sc config "CDPSvc" start= disabled
-sc config "CscService" start= disabled
-sc config "PhoneSvc" start= disabled
-sc config "Fax" start= disabled
-sc config "InstallService" start= disabled
-sc config "icssvc" start= disabled
-sc config "SEMgrSvc" start= disabled
-sc config "SmsRouter" start= disabled
-sc config "Spooler" start= disabled
-sc config "SysMain" start= disabled
-sc config "WpnService" start= disabled
-sc config "WSearch" start= disabled
-sc config "stisvc" start= disabled
-sc config "TabletInputService" start= disabled
-sc config "DiagTrack" start= disabled
-sc config "MapsBroker" start= disabled
-sc config "CertPropSvc" start= disabled
-sc config "WbioSrvc" start= disabled
-sc config "wuauserv" start= disabled
-sc config "BDESVC" start= disabled
-sc config "DPS" start= disabled
-sc config "fhsvc" start= disabled
-sc config "SharedAccess" start= disabled
-sc config "Netlogon" start= disabled
-sc config "PcaSvc" start= disabled
-sc config "WpcMonSvc" start= disabled
-sc config "lmhosts" start= disabled
-sc config "WerSvc" start= disabled
-sc config "FrameServer" start= disabled
-sc config "wisvc" start= disabled
-sc config "VaultSvc" start= disabled
-sc config "BTAGService" start= disabled
-sc config "DusmSvc" start= disabled
-sc config "DoSvc" start= disabled
-sc config "dmwappushservice" start= disabled
-sc config "lfsvc" start= disabled
-sc config "NcdAutoSetup" start= disabled
-sc config "QWAVE" start= disabled
-sc config "RmSvc" start= disabled
-sc config "RasMan" start= disabled
-sc config "RasAuto" start= disabled
-sc config "ScDeviceEnum" start= disabled
-sc config "SCardSvr" start= disabled
-sc config "TapiSrv" start= disabled
-sc config "DispBrokerDesktopSvc" start= disabled
-sc config "LanmanServer" start= disabled
-sc config "LanmanWorkstation" start= disabled
-sc config "SENS" start= disabled
-sc config "fdPHost" start= disabled
-sc config "FDResPub" start= disabled
-sc stop "seclogon"
-sc stop "CDPSvc"
-sc stop "CscService"
-sc stop "PhoneSvc"
-sc stop "Fax"
-sc stop "InstallService"
-sc stop "icssvc"
-sc stop "SEMgrSvc"
-sc stop "SmsRouter"
-sc stop "Spooler"
-sc stop "SysMain"
-sc stop "WpnService"
-sc stop "WSearch"
-sc stop "stisvc"
-sc stop "TabletInputService"
-sc stop "DiagTrack"
-sc stop "MapsBroker"
-sc stop "CertPropSvc"
-sc stop "WbioSrvc"
-sc stop "wuauserv"
-sc stop "BDESVC"
-sc stop "DPS"
-sc stop "fhsvc"
-sc stop "SharedAccess"
-sc stop "Netlogon"
-sc stop "PcaSvc"
-sc stop "WpcMonSvc"
-sc stop "lmhosts"
-sc stop "WerSvc"
-sc stop "FrameServer"
-sc stop "wisvc"
-sc stop "VaultSvc"
-sc stop "BTAGService"
-sc stop "DusmSvc"
-sc stop "DoSvc"
-sc stop "dmwappushservice"
-sc stop "lfsvc"
-sc stop "NcdAutoSetup"
-sc stop "QWAVE"
-sc stop "RmSvc"
-sc stop "RasMan"
-sc stop "RasAuto"
-sc stop "ScDeviceEnum"
-sc stop "SCardSvr"
-sc stop "TapiSrv"
-sc stop "DispBrokerDesktopSvc"
-sc stop "LanmanServer"
-sc stop "LanmanWorkstation"
-sc stop "SENS"
-sc stop "fdpHost"
-sc stop "FDResPub"
+:: list of services to be backed up, disabled and stopped
+setlocal EnableDelayedExpansion
+set "services=seclogon CDPSvc CscService PhoneSvc Fax InstallService icssvc SEMgrSvc SmsRouter Spooler SysMain WpnService WSearch stisvc TabletInputService DiagTrack MapsBroker CertPropSvc WbioSrvc wuauserv BDESVC DPS fhsvc SharedAccess Netlogon PcaSvc WpcMonSvc lmhosts WerSvc FrameServer wisvc VaultSvc BTAGService DusmSvc DoSvc dmwappushservice lfsvc NcdAutoSetup QWAVE RmSvc RasMan RasAuto ScDeviceEnum SCardSvr TapiSrv DispBrokerDesktopSvc LanmanServer LanmanWorkstation SENS fdPHost FDResPub"
+
+:: Backup current start types and running statuses to a file
+set backupFile="service_backup.txt"
+echo. > %backupFile%
+for %%S in (%services%) do (
+    rem Fetch start type
+    for /f "tokens=3" %%T in ('sc qc "%%S" ^| findstr "START_TYPE"') do (
+        set "startType=%%T"
+    )
+    :: fetch running status
+    for /f "tokens=4" %%R in ('sc query "%%S" ^| findstr "STATE"') do (
+        if "%%R"=="RUNNING" (
+            set "runningStatus=running"
+        ) else (
+            set "runningStatus=stopped"
+        )
+    )
+    echo %%S !startType! !runningStatus! >> %backupFile%
+)
+
+:: disable and stop services
+for %%S in (%services%) do (
+    sc config "%%S" start= disabled
+    sc stop "%%S"
+)
+endlocal
 
 :: closing unessesary tasks
 taskkill /F /IM "explorer.exe"
@@ -263,93 +193,39 @@ ipconfig/flushDNS
 goto select_3
 
 :reset
+:: checking if dwm isn't running to resume winlogon and start dwm
 cls
-:: checking if dwm isn't running to resume winlogon it
 tasklist|find "dwm.exe" >nul
 if "%errorlevel%"== "1" "Tools\PSSuspend\pssuspend.exe" -nobanner -r winlogon.exe
 
 :: starting previously closed tasks
 start explorer.exe
 
-:: setting starttypes of services to their defaults and start them, needs some optimizing/trimming in the future
-sc config "seclogon" start= demand
-sc config "CDPSvc" start= delayed-auto
-sc config "CscService" start= demand
-sc config "PhoneSvc" start= demand
-sc config "Fax" start= demand
-sc config "InstallService" start= demand
-sc config "icssvc" start= demand
-sc config "SEMgrSvc" start= demand
-sc config "SmsRouter" start= demand
-sc config "Spooler" start= auto
-sc config "SysMain" start= auto
-sc config "WpnService" start= auto
-sc config "WSearch" start= delayed-auto
-sc config "stisvc" start= auto
-sc config "TabletInputService" start= demand
-sc config "DiagTrack" start= auto
-sc config "MapsBroker" start= delayed-auto
-sc config "CertPropSvc" start= demand
-sc config "WbioSrvc" start= demand
-sc config "wuauserv" start= demand
-sc config "BDESVC" start= demand
-sc config "DPS" start= auto
-sc config "fhsvc" start= demand
-sc config "SharedAccess" start= demand
-sc config "Netlogon" start= demand
-sc config "PcaSvc" start= demand
-sc config "WpcMonSvc" start= demand
-sc config "lmhosts" start= demand
-sc config "WerSvc" start= demand
-sc config "FrameServer" start= demand
-sc config "wisvc" start= demand
-sc config "VaultSvc" start= demand
-sc config "BTAGService" start= demand
-sc config "DusmSvc" start= auto
-sc config "DoSvc" start= auto
-sc config "dmwappushservice" start= demand
-sc config "lfsvc" start= demand
-sc config "NcdAutoSetup" start= demand
-sc config "QWAVE" start= demand
-sc config "RmSvc" start= demand
-sc config "RasMan" start= auto
-sc config "RasAuto" start= demand
-sc config "RemoteAccess" start= disabled
-sc config "ScDeviceEnum" start= demand
-sc config "SCardSvr" start= demand
-sc config "TapiSrv" start= demand
-sc config "DispBrokerDesktopSvc" start= auto
-sc config "LanmanServer" start= auto
-sc config "LanmanWorkstation" start= auto
-sc config "SENS" start= auto
-sc config "fdPHost" start= demand
-sc config "FDResPub" start= demand
-sc start "CDPSvc"
-sc start "InstallService"
-sc start "SEMgrSvc"
-sc start "Spooler"
-sc start "SysMain"
-sc start "WpnService"
-sc start "WSearch"
-sc start "stisvc"
-sc start "TabletInputService"
-sc start "DiagTrack"
-sc start "WbioSrvc"
-sc start "DPS"
-sc start "PcaSvc"
-sc start "lmhosts"
-sc start "VaultSvc"
-sc start "DusmSvc"
-sc start "QWAVE"
-sc start "RmSvc"
-sc start "RasMan"
-sc start "TapiSrv"
-sc start "DispBrokerDesktopSvc"
-sc start "LanmanServer"
-sc start "LanmanWorkstation"
-sc start "SENS"
-sc start "fdpHost"
-sc start "FDResPub"
+:: backup file with original start types and running statuses
+setlocal EnableDelayedExpansion
+set backupFile="service_backup.txt"
+
+:: read and restore start types and running statuses
+for /f "usebackq tokens=1,2,3" %%S in (%backupFile%) do (
+    rem Correctly format the start type for sc config
+    set startType=%%T
+    
+    if "!startType!"=="2" set startType=auto
+    if "!startType!"=="3" set startType=demand
+    if "!startType!"=="4" set startType=disabled
+    if "!startType!"=="0" set startType=boot
+    if "!startType!"=="1" set startType=system
+    if "!startType!"=="delayed-auto" set startType=delayed-auto  rem Add this if delayed is used
+
+    :: restore start type
+    sc config "%%S" start= !startType!
+    
+    rem Restore running state if it was running
+    if "%%U"=="running" (
+        sc start "%%S"
+    )
+)
+endlocal
 
 :: changing priorities of common processes to normal
 wmic process where name="chrome.exe" CALL setpriority "32"
@@ -359,13 +235,8 @@ wmic process where name="steamservice.exe" CALL setpriority "32"
 wmic process where name="steamwebhelper.exe" CALL setpriority "32"
 goto select_2
 
-::   /////////////////
-::  //  Test Menu  //
-:: /////////////////
-
-
-:: choices from tool_menu
 :tools
+:: choices from tool_menu
 cls
 if "%c%"=="1" start resmon
 if "%c%"=="2" start sndvol
@@ -373,8 +244,8 @@ if "%c%"=="3" start taskmgr
 if "%c%"=="4" start cmd
 goto select_3
 
-:: check for pssuspend and if not found download it via BitsTransfer
 :dwm_check
+:: check for pssuspend and if not found download it via BitsTransfer
 tasklist | find "dwm.exe"
 if %version% GTR 10020348 cls & echo. & echo Windows 11 is not Supported! & goto select_3
 if not exist "Tools\PSSuspend\pssuspend.exe" goto download
@@ -386,6 +257,7 @@ powershell -Command "Start-BitsTransfer "https://live.sysinternals.com/pssuspend
 if "%errorlevel%"=="0" (goto dwm_disable) else (goto dwm_enable)
 
 :dwm_disable
+:: disable dwm by suspending winlogon
 cls & echo.
 echo Disable DWM...
 "Tools\PSSuspend\pssuspend.exe" -nobanner winlogon.exe
@@ -395,21 +267,18 @@ taskkill /F /IM "TextInputHost.exe"
 taskkill /F /IM "StartMenuExperienceHost.exe"
 taskkill /F /IM "ShellExperienceHost.exe"
 taskkill /F /IM "dwm.exe"
-cls
-echo.
-echo DWM disabled successfully!
 goto select_3
 
 :dwm_enable
+:: re-enable dwm by resuming winlogon
 cls & echo.
 echo Enable DWM...
 "Tools\PSSuspend\pssuspend.exe" -nobanner -r winlogon.exe
-cls
-echo.
-echo DWM enabled successfully!
 goto select_3
 
+
 :not_supported
+:: prompts the User to exit since they are below supported os versions
 cls
 echo.
 echo Your current Windows Version isn't supported!
@@ -418,6 +287,7 @@ pause >nul
 goto exit
 
 :exit_warning
+:: warns the user when they try to exit after the optimization is done
 cls
 color 40
 echo.
