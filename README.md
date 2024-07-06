@@ -4,17 +4,18 @@
 Simple Batch that does optimizations like disabling Tasks, Services and much more while Gaming.<br/>
 All changes will only be temporary you also have the option to revert everything.
 
-Works on:
+### Supported Windows Versions:
 - Windows 10
-- Windows 11*
-- Windows Server*
+- Windows 11*¹
+- Windows Server*²
 
-While this should fully work on Windows 11 some features might be only available for Windows 10.<br>
-All Windows Server Versions that are based on 10 (2016, 2019 & 2022) should work but aren't tested.
+*¹ While this should fully work on Windows 11 some features might be only available for Windows 10.<br>
+*² All Windows Server Versions that are based on 10 (2016, 2019 & 2022) should work but aren't tested.
 
-There are currently 2 Versions available:<br/>
-Gaming Optimization.bat (Recommended for most People) - Main Project that doesn't need any changes from the User just download & run.<br/>
-Gaming Optimization Extended.bat - Outdated and not Updated anymore only keeping it for archival reasons, was meant for advanced users since it needs lots of editing.
+### Available Versions:
+- Gaming Optimization.bat (Recommended) - Main Project that doesn't need any changes from the User just download & run.<br/>
+- AutoOptimization.bat (NEW, WIP) - Basically like the main Script except that it automatically optimizes when a process listed in tasklist.txt runs and reverts everything when the task closes.</br>
+- Gaming Optimization Extended.bat - Outdated and not Updated anymore only keeping it for archival reasons, was meant for advanced users since it needs lots of editing.
 
 Things that you in theory can expect from the Optimization:<br/>
 - Reduced Ram usage
@@ -22,7 +23,7 @@ Things that you in theory can expect from the Optimization:<br/>
 - Reduced CPU Usage in some cases
 - Free up Space
 
-Here is a list of things that the optimization does:
+### Small list of the optimizing process:
 
 - Killing unessesary tasks
 - Disabling useless Services
@@ -32,5 +33,5 @@ Here is a list of things that the optimization does:
 - Flushes DNS (because it can)
 - Disable DWM (Reduces CPU Usage and Input Latency, Windows 10 only!)
 
-Credits / Other Sources<br/>
+## Credits / Other Sources
 [kurtis2222](https://github.com/kurtis2222/win10_dwm_tool) for the DWM Idea<br/>
