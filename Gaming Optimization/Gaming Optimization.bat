@@ -1,15 +1,15 @@
 @echo off
 title Gaming Optimization
 
-echo Checking for Admin Permissions...
 :: request admin permission
+echo Checking for Admin Permissions...
 if not "%1"=="am_admin" (powershell start -verb runas '%0' am_admin & exit /b)
 cd "%~dp0"
 
 :winver
-:: checking if the build number is higher than 20348 to see if it's 11 and less than 10240 for anything before 10
+:: checking if the build number is higher than 10.0.26100 to see if it's 11 and less than 10.0.10240 for anything before 10
 for /f "tokens=4-6 delims=.] " %%i in ('ver') do set VERSION=%%i%%j%%k
-if %version% GTR 10020348 (set osver=Windows 11 - Partly Supported) else (set osver=Windows 10 - Supported)
+if %version% GTR 10026100 (set osver=Windows 11 - Supported) else (set osver=Windows 10 - Supported)
 if %version% LSS 10010240 goto not_supported
 
 :start
@@ -78,19 +78,24 @@ cls & echo.
 echo Select the Program you want to start:
 echo.
 echo 0 = Back
-echo 1 = Resource Monitor
-echo 2 = Soundmixer
-echo 3 = Task Manager
-echo 4 = Command Prompt
+echo 1 = Explorer
+echo 2 = Resource Monitor
+echo 3 = Soundmixer
+echo 4 = Task Manager
+echo 5 = Command Prompt
 echo.
 set /p c=Select your Option: 
 if "%c%"=="test" goto test_menu
 if "%c%"=="0" cls & goto select_3
-if "%c%" GTR "4" goto tool_menu
-goto tools
+if "%c%"=="1" start explorer /B
+if "%c%"=="2" start resmon
+if "%c%"=="3" start sndvol
+if "%c%"=="4" start taskmgr
+if "%c%"=="5" start cmd
+if "%c%" GTR "5" goto tool_menu
 
 :extra_menu
-:: menu where i put selections not made in the optimizing process
+:: menu with extra optimization options
 cls & echo.
 echo What do you want to do?
 echo.
@@ -128,6 +133,7 @@ if "%c%" GTR "5" goto test_menu
 
 :optimize
 cls
+:: this part is still needs some restructuring
 :: list of services to be backed up, disabled and stopped
 setlocal EnableDelayedExpansion
 set "services=seclogon CDPSvc CscService PhoneSvc Fax InstallService icssvc SEMgrSvc SmsRouter Spooler SysMain WpnService WSearch stisvc TabletInputService DiagTrack MapsBroker CertPropSvc WbioSrvc wuauserv BDESVC DPS fhsvc SharedAccess Netlogon PcaSvc WpcMonSvc lmhosts WerSvc FrameServer wisvc VaultSvc BTAGService DusmSvc DoSvc dmwappushservice lfsvc NcdAutoSetup QWAVE RmSvc RasMan RasAuto ScDeviceEnum SCardSvr TapiSrv DispBrokerDesktopSvc LanmanServer LanmanWorkstation SENS fdPHost FDResPub"
@@ -157,56 +163,39 @@ for %%S in (%services%) do (
     sc config "%%S" start= disabled
     sc stop "%%S"
 )
+
+:: stopping listed tasks
+for %%S in (explorer.exe Microsoft.Photos.exe WinStore.App.exe TaskInputHost.exe ShellExperienceHost.exe GameBarPresenceWriter.exe atieclxx.exe RtkNGUI64.exe spoolv.exe) do (
+taskkill /F /IM "%%S"
+)
+
+:: lowering priorities from common processes
+for %%S in (steam.exe steamservice.exe steamwebhelper.exe GameOverlayUI.exe) do wmic process where name="%%S" CALL setpriority "64"
+for %%S in (chrome.exe firefox.exe) do wmic process where name="%%S" CALL setpriority "16384"
+
+:: deleting recycle bins and temp files
+for %%S in (C D E F G H I J K L M N O P Q R S T U V W X Y Z) do (
+rd /s /q "%%S:\$Recycle.bin")
+rd /s /q "C:\Windows\Prefetch" "C:\Windows\Temp" "C:\Windows\SoftwareDistribution\Download" "%localappdata%\Temp"
+md "C:\Windows\Prefetch" "C:\Windows\Temp" "C:\Windows\SoftwareDistribution\Download" "%localappdata%\Temp"
 endlocal
 
-:: closing unessesary tasks
-taskkill /F /IM "explorer.exe"
-taskkill /F /IM "Microsoft.Photos.exe"
-taskkill /F /IM "WinStore.App.exe"
-taskkill /F /IM "TaskInputHost.exe"
-taskkill /F /IM "ShellExperienceHost.exe"
-taskkill /F /IM "GameBarPresenceWriter.exe"
-taskkill /F /IM "atieclxx.exe"
-taskkill /F /IM "RtkNGUI64.exe"
-taskkill /F /IM "spoolsv.exe"
-
-:: lowering common process priorities
-wmic process where name="chrome.exe" CALL setpriority "16384"
-wmic process where name="firefox.exe" CALL setpriority "16384"
-wmic process where name="steam.exe" CALL setpriority "64"
-wmic process where name="steamservice.exe" CALL setpriority "64"
-wmic process where name="steamwebhelper.exe" CALL setpriority "64"
-wmic process where name="GameOverlayUI.exe" CALL setpriority "64"
-
-:: deleting unessesary stuff such as the recycle bin, temp folders, prefetch folder and leftover windows update files
-rd /s /q C:\$Recycle.bin
-rd /s /q "C:\Windows\Prefetch"
-rd /s /q "C:\Windows\Temp"
-rd /s /q "C:\Windows\SoftwareDistribution\Download"
-rd /s /q "%localappdata%\Temp"
-md "C:\Windows\Prefetch"
-md "C:\Windows\Temp"
-md "C:\Windows\SoftwareDistribution\Download"
-md "%localappdata%\Temp"
-
 :: flusing dns
-ipconfig/flushDNS
+ipconfig /flushDNS
 goto select_3
 
 :reset
 :: checking if dwm isn't running to resume winlogon and start dwm
 cls
 tasklist|find "dwm.exe" >nul
-if "%errorlevel%"== "1" "Tools\PSSuspend\pssuspend.exe" -nobanner -r winlogon.exe
+if "%errorlevel%"== "1" "Tools\PSSuspend\pssuspend.exe" -accepteula -nobanner -r winlogon.exe
 
 :: starting previously closed tasks
 start explorer.exe
 
-:: backup file with original start types and running statuses
+:: read and restore start types and running statuses from backup file
 setlocal EnableDelayedExpansion
 set backupFile="%appdata%\Gaming Optimization\service_backup.txt"
-
-:: read and restore start types and running statuses
 for /f "usebackq tokens=1,2,3" %%S in (%backupFile%) do (
     rem Correctly format the start type for sc config
     set startType=%%T
@@ -226,27 +215,16 @@ for /f "usebackq tokens=1,2,3" %%S in (%backupFile%) do (
         sc start "%%S"
     )
 )
-endlocal
 
-:: changing priorities of common processes to normal
-wmic process where name="chrome.exe" CALL setpriority "32"
-wmic process where name="firefox.exe" CALL setpriority "32"
-wmic process where name="steam.exe" CALL setpriority "32"
-wmic process where name="steamservice.exe" CALL setpriority "32"
-wmic process where name="steamwebhelper.exe" CALL setpriority "32"
+:: revert priorities
+for %%S in (chrome.exe firefox.exe steam.exe steamservice.exe steamwebhelper.exe GameOverlayUI.exe) do (
+wmic process where name="%%S" CALL setpriority "32"
+)
+endlocal
 goto select_2
 
-:tools
-:: choices from tool_menu
-cls
-if "%c%"=="1" start resmon
-if "%c%"=="2" start sndvol
-if "%c%"=="3" start taskmgr
-if "%c%"=="4" start cmd
-goto select_3
-
 :dwm_check
-:: check for pssuspend and if not found download it via BitsTransfer
+:: check for pssuspend and download if not found
 tasklist | find "dwm.exe"
 if %version% GTR 10020348 cls & echo. & echo Windows 11 is not Supported! & goto select_3
 if not exist "Tools\PSSuspend\pssuspend.exe" goto download
@@ -261,25 +239,19 @@ if "%errorlevel%"=="0" (goto dwm_disable) else (goto dwm_enable)
 :: disable dwm by suspending winlogon
 cls & echo.
 echo Disable DWM...
-"Tools\PSSuspend\pssuspend.exe" -nobanner winlogon.exe
-taskkill /F /IM "explorer.exe"
-taskkill /F /IM "SearchApp.exe"
-taskkill /F /IM "TextInputHost.exe"
-taskkill /F /IM "StartMenuExperienceHost.exe"
-taskkill /F /IM "ShellExperienceHost.exe"
-taskkill /F /IM "dwm.exe"
+"Tools\PSSuspend\pssuspend.exe" -accepteula -nobanner winlogon.exe
+for %%S in (explorer.exe SearchApp.exe TextInputHost.exe StartMenuExperienceHost.exe ShellExperienceHost.exe dwm.exe) do taskkill /f /im "%%S"
 goto select_3
 
 :dwm_enable
 :: re-enable dwm by resuming winlogon
 cls & echo.
 echo Enable DWM...
-"Tools\PSSuspend\pssuspend.exe" -nobanner -r winlogon.exe
+"Tools\PSSuspend\pssuspend.exe" -accepteula -nobanner -r winlogon.exe
 goto select_3
 
 
 :not_supported
-:: prompts the User to exit since they are below supported os versions
 cls
 echo.
 echo Your current Windows Version isn't supported!
@@ -288,7 +260,6 @@ pause >nul
 goto exit
 
 :exit_warning
-:: warns the user when they try to exit after the optimization is done
 cls
 color 40
 echo.
